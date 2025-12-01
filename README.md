@@ -29,7 +29,6 @@ It supports multiple system user roles—**employees, managers, HR administrator
 ## Entity-Relationship Diagram (ERD)
 
 ![HRMS ERD](./ERD/ERD.png)
-
 ---
 
 ## 2. System Requirements
@@ -272,6 +271,7 @@ HRMS-Database-Project/
 ├── README.md
 └── .gitignore
 ```
+
 
 
 
