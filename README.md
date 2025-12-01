@@ -26,6 +26,9 @@ The platform ensures:
 - **Decision-making analytics**  
 
 It supports multiple system user roles—**employees, managers, HR administrators, payroll specialists, and system administrators**—each with specific permissions and responsibilities.
+## Entity-Relationship Diagram (ERD)
+
+![HRMS ERD](./ERD/ERD Milestone 1-1.png)
 
 ---
 
@@ -269,3 +272,4 @@ HRMS-Database-Project/
 ├── README.md
 └── .gitignore
 ```
+
