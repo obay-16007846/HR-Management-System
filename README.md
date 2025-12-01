@@ -254,4 +254,18 @@ Actor, timestamp, reason for modification.
 ---
 
 ## 3. Project Structure (Repository Layout)
-
+```
+HRMS-Database-Project/
+│
+├── ERD/
+│ ├── project.erdplus
+│ └── project db.erdplus
+│
+├── SQL/
+│ ├── SQLQuery1_CREATION.sql
+│ ├── SQLQuery2_INSERTION.sql
+│ └── SQLQuery3_PROCEDURE.sql
+│
+├── README.md
+└── .gitignore
+```
