@@ -1,0 +1,2947 @@
+{
+  "diagramType": 2,
+  "data": {
+    "nodes": [
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "type": "Table",
+        "position": {
+          "x": 595.4536763424605,
+          "y": 179.09843710518817
+        },
+        "data": {
+          "label": "Employee",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "e3ef489f-b451-41d8-917e-a40569194126",
+              "name": "EmployeeID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "isUnique": false
+            },
+            {
+              "id": "9f32fec5-0aff-452c-8225-41f22ebfdd3a",
+              "name": "FullName",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "100",
+              "isOptional": false,
+              "isUnique": false
+            },
+            {
+              "id": "c2cf9658-aa39-4e95-936a-e5ac69632d6b",
+              "name": "NationalID",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isUnique": true,
+              "isOptional": false
+            },
+            {
+              "id": "cf984f5d-8761-4a61-8339-754534214d55",
+              "name": "InsuranceInfo",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255",
+              "isOptional": true,
+              "isUnique": false
+            },
+            {
+              "id": "1374a0f8-8c5e-473e-ad0a-05c557f6d95c",
+              "name": "DateOfBirth",
+              "type": "DATE",
+              "position": 0,
+              "isOptional": false,
+              "isUnique": false
+            },
+            {
+              "id": "ce39aa5b-b32c-4a0b-9db8-deacd86b2372",
+              "name": "CountryOfBirth",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isOptional": false,
+              "isUnique": false
+            },
+            {
+              "id": "eb92db6b-2cb2-47f3-8d7a-6e1aa8a7de95",
+              "name": "Email",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "100",
+              "isOptional": false,
+              "isUnique": false
+            },
+            {
+              "id": "3c5759e3-bb7b-4777-a7d0-48d259ec3ef1",
+              "name": "Phone",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "20",
+              "isOptional": true,
+              "isUnique": false
+            },
+            {
+              "id": "948cb523-3564-4707-bd69-6e2d023cf05e",
+              "name": "EmergencyContact",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "100",
+              "isUnique": false
+            },
+            {
+              "id": "c8c9e184-4a75-41be-a55a-44c79f422b07",
+              "name": "Biography",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000",
+              "isUnique": false
+            },
+            {
+              "id": "1ac0df1e-0168-48d2-ad75-027aed87208f",
+              "name": "ProfileImage",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255",
+              "isUnique": false
+            },
+            {
+              "id": "1549a24e-cb9b-4816-b562-9ee23e93df08",
+              "name": "HireDate",
+              "type": "DATE",
+              "position": 0,
+              "isUnique": false
+            },
+            {
+              "id": "8403bca0-03df-4916-ac89-f6a2ac1a4e5e",
+              "name": "EmploymentStateEmploymentState",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isUnique": false
+            },
+            {
+              "id": "eae646d8-7ab0-4663-b050-ee5a01f044b4",
+              "name": "ActivationStatus",
+              "type": "INT",
+              "position": 0,
+              "isUnique": false
+            },
+            {
+              "id": "680d1da6-5163-478c-858b-5ed8c6e0af2a",
+              "name": "Completeness",
+              "type": "INT",
+              "position": 0,
+              "isUnique": false
+            },
+            {
+              "id": "9a0d2874-5370-4406-a537-7bed54895a87",
+              "name": "PositionID",
+              "type": "INT",
+              "position": 0,
+              "isUnique": false
+            },
+            {
+              "id": "78f57594-5c3f-498b-abd2-c80e533a34b9",
+              "name": "DirectManagerID",
+              "type": "INT",
+              "position": 0,
+              "isUnique": false
+            },
+            {
+              "id": "1fcb5dd0-a373-45d3-b988-58e182b2b11a",
+              "name": "TaxFormID",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "3cc1d952-f757-4017-82ce-d7d731ff41ce",
+              "name": "SalaryTypeID",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "fk_795252c0-0427-40b0-b5c2-058dd20f0440",
+              "name": "fk_EmployeeRole",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "8f0f2d11-f02e-4493-9c4b-4ab0a8d071db",
+                "sourceTableId": "1ec713ac-1f0e-47b8-bad0-1a1f7f401e33",
+                "columns": [
+                  {
+                    "id": "fk_fk_97600c6f-dd3f-4f7a-b6d4-9db80e486d58",
+                    "name": "RoleID",
+                    "type": "INT"
+                  },
+                  {
+                    "id": "fk_7fa647b2-8a83-4e83-924f-9f2e53878b2f",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fk_8c3cba91-691a-4f0c-bf94-e058c902bf43",
+              "name": "fk_EmployeeRole",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "06db0432-b671-45b0-b378-f1f28369ac42",
+                "sourceTableId": "1ec713ac-1f0e-47b8-bad0-1a1f7f401e33",
+                "columns": [
+                  {
+                    "id": "fk_fk_97600c6f-dd3f-4f7a-b6d4-9db80e486d58",
+                    "name": "RoleID",
+                    "type": "INT"
+                  },
+                  {
+                    "id": "fk_7fa647b2-8a83-4e83-924f-9f2e53878b2f",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fk_a265eb69-d7f0-4f30-9917-a982ef424bb4",
+              "name": "fk_Department",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "9713ca20-0970-4a65-945b-1d3717a15e8c",
+                "sourceTableId": "86b39d40-54e0-470a-bd11-20260879183d",
+                "columns": [
+                  {
+                    "id": "fk_f70062dd-bbf8-4a1d-9e57-889ea8c14fee",
+                    "name": "DepartmentID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fk_69f67386-b3bf-4058-9988-0bc75acf643a",
+              "name": "fk_Position",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "97d90e66-ac1b-4415-93b3-d6eadf24eae1",
+                "sourceTableId": "adfd4bef-d8ae-44c3-928a-27ccdd9cf7e1",
+                "columns": [
+                  {
+                    "id": "fk_b80128e3-c995-47d8-a30c-4733dc327523",
+                    "name": "PositionID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fk_152e92a5-9def-4fcd-9cf4-0e1d8f81386d",
+              "name": "fk_Contract",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "e4f0c3dc-a989-4860-a04d-885cafa97273",
+                "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+                "columns": [
+                  {
+                    "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                    "name": "ContractID",
+                    "type": "INT",
+                    "size": "50"
+                  }
+                ]
+              }
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 670
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "0f70b454-ebd4-4317-adf5-735f68081fd9",
+        "type": "Table",
+        "position": {
+          "x": 909.128339950966,
+          "y": 653.8344168815179
+        },
+        "data": {
+          "label": "HRAdministrator",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "7cd30881-a082-4ea2-b880-5ec1177f50e3",
+              "name": "ApprovalLevel",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "09609fa5-8bbb-4c92-96e5-ec6440047462",
+              "name": "AccessScope",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "baa1d96f-6300-46ef-8516-11820055ce4e",
+              "name": "DocumentValidationRights",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_34f5082b-1013-40f7-a5cd-a2c09b9519aa",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "b4d954e5-1b24-4a76-9e4a-9e4f7098bae8",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 142
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "69a65c32-61f4-4cf0-9de0-fa37b7cc7688",
+        "type": "Table",
+        "position": {
+          "x": 217.14320413846605,
+          "y": 471.62797864226934
+        },
+        "data": {
+          "label": "SystemAdministrator",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_7efe8859-0278-463f-aa04-0ed6c3e7c31e",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "504821db-fd74-457c-b47b-213903bdb0d4",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "e24a6df4-6a47-4941-b591-c0832726b868",
+              "name": "PrivilegeLevel",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "dd942517-806b-4c1b-8f28-984b752545b9",
+              "name": "ConfigurableFieldsList",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            },
+            {
+              "id": "c28e8d35-cb1b-43e6-b491-c5ea2d3c5925",
+              "name": "AuditVisibilityScope",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "44f23f57-4582-422e-8b2d-a43105dd8367",
+        "type": "Table",
+        "position": {
+          "x": 240.07305041808445,
+          "y": 654.6247053856224
+        },
+        "data": {
+          "label": "LineManager",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_e0551c3d-3f65-4d63-b8e0-dc2cbb226680",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "82fa7454-6df4-4314-ad97-e928be012736",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "12e60be0-ca67-432b-b13c-779b8afca3f9",
+              "name": "TeamSize",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "a9ef3d0c-b954-428f-9169-8b3bc067d6f1",
+              "name": "DepartmentsUnderSupervision",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            },
+            {
+              "id": "bf35d9fb-2753-411b-8f62-3af3cf72d944",
+              "name": "ApprovalLimit",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 142
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "5ccacefb-3211-4028-85de-898368f45b18",
+        "type": "Table",
+        "position": {
+          "x": -272.19061079278544,
+          "y": -161.14499459357634
+        },
+        "data": {
+          "label": "Role",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "97600c6f-dd3f-4f7a-b6d4-9db80e486d58",
+              "name": "RoleID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "f6ae821a-edc6-44c1-807f-d4bbb267d146",
+              "name": "Name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "822e02c1-4162-4f8c-9794-384a1dbee69c",
+              "name": "Purpose",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 100
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "1ec713ac-1f0e-47b8-bad0-1a1f7f401e33",
+        "type": "Table",
+        "position": {
+          "x": 244.79666658615173,
+          "y": -161.04692511385605
+        },
+        "data": {
+          "label": "EmployeeRole",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_e965cb37-b3f5-464e-b4d8-d87be0e24587",
+              "name": "fk_Role",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "019c5cee-b6f6-4e91-a03c-af6a8949eb85",
+                "sourceTableId": "5ccacefb-3211-4028-85de-898368f45b18",
+                "columns": [
+                  {
+                    "id": "fk_97600c6f-dd3f-4f7a-b6d4-9db80e486d58",
+                    "name": "RoleID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_34fac2ed-502a-452a-98ff-24c951823f93",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "0e7d0de1-210a-49c1-9d50-2ca02b4af54e",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 77
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "86b39d40-54e0-470a-bd11-20260879183d",
+        "type": "Table",
+        "position": {
+          "x": 215.96779041022353,
+          "y": 853.73574852281
+        },
+        "data": {
+          "label": "Department",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "f70062dd-bbf8-4a1d-9e57-889ea8c14fee",
+              "name": "DepartmentID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "443583f8-712a-4438-92d2-8c2f5f0f6b31",
+              "name": "Name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "88d08131-3972-41a0-8245-99e8d17066c1",
+              "name": "Purpose",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 100
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "adfd4bef-d8ae-44c3-928a-27ccdd9cf7e1",
+        "type": "Table",
+        "position": {
+          "x": 922.7429654019068,
+          "y": 876.9957580932472
+        },
+        "data": {
+          "label": "Position",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "b80128e3-c995-47d8-a30c-4733dc327523",
+              "name": "PositionID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "bc91fe54-ae7f-4a56-9f97-f2dfd19a93c0",
+              "name": "Title",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "cc7a3e17-e42e-435c-8922-827cbe4fded7",
+              "name": "Responsibilities",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 100
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "08085b78-127a-4e25-8813-9084ab4ddb38",
+        "type": "Table",
+        "position": {
+          "x": 909.9895440294425,
+          "y": 479.9180468032753
+        },
+        "data": {
+          "label": "PayrollSpecialist",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "d4568ad0-83b4-4fce-a866-56a5bf971c0f",
+              "name": " assigned region",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_94e3f23b-9c82-44d2-8ceb-f205a18d0eb0",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "fbcdb694-d790-4397-bad9-2b9f003da59d",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "968ee7e2-6755-4942-aba7-d2c181bebb7d",
+              "name": "processing frequency",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "6e29c454-427a-4724-80b5-24910c25c414",
+              "name": " last processed period ",
+              "type": "DATE",
+              "position": 0
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+        "type": "Table",
+        "position": {
+          "x": 553.8277857468969,
+          "y": 1014.235189355706
+        },
+        "data": {
+          "label": "Contract",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "1b836bfd-ce07-480b-b1de-69904bda85f7",
+              "name": "ContractID",
+              "type": "INT",
+              "position": 0,
+              "size": "50",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "0e552720-c2e6-41be-a68f-f23048cd6b1a",
+              "name": "Type",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isOptional": false
+            },
+            {
+              "id": "964c8a57-8fa1-4af3-aa6b-a12486e483fb",
+              "name": "StartDate",
+              "type": "DATE",
+              "position": 0,
+              "isOptional": false
+            },
+            {
+              "id": "7ea98b70-d0bf-4a55-a450-e75d8eb99708",
+              "name": "EndDate",
+              "type": "DATE",
+              "position": 0,
+              "isOptional": true
+            },
+            {
+              "id": "0d107602-1fa7-40fa-9957-ea35ee85e2d3",
+              "name": "State",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 150
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "c2d17585-dea1-4bda-95f3-0977fa026550",
+        "type": "Table",
+        "position": {
+          "x": 885.896653734137,
+          "y": 1013.865965862989
+        },
+        "data": {
+          "label": "FullTimeContract",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_614509ab-1994-43c3-b87e-8fb67540d598",
+              "name": "fk_Contract",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "c8dbb2c6-f8ce-4490-8cd6-81258945c89d",
+                "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+                "columns": [
+                  {
+                    "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                    "name": "ContractID",
+                    "type": "INT",
+                    "size": "50"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "b17ff316-0d1e-41ef-97db-7991976aca0d",
+              "name": "LeaveEntitlement",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "8a52812d-e584-4c07-abe5-3794d807923a",
+              "name": "InsuranceEligibility",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            },
+            {
+              "id": "83d6039f-f011-4b45-a52b-3ca6f78c670f",
+              "name": "WeeklyWorkingHours",
+              "type": "INT",
+              "position": 0
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "70459b58-5903-4274-99b8-706fe9b1d569",
+        "type": "Table",
+        "position": {
+          "x": 217.07583972992592,
+          "y": 1013.7612864737309
+        },
+        "data": {
+          "label": "PartTimeContract",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_572b4ae6-c0f3-4c96-969f-e8af69766bb3",
+              "name": "fk_Contract",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "6b62eef7-3757-4998-ba5e-707d65fd3207",
+                "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+                "columns": [
+                  {
+                    "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                    "name": "ContractID",
+                    "type": "INT",
+                    "size": "50"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "223d73d8-9bc0-4fe4-b2f6-c3b8417223c6",
+              "name": "HourlyRate",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "08d675bc-1153-4196-ba72-f258c27d429c",
+              "name": "MonthlyWorkingLimits",
+              "type": "INT",
+              "position": 0
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 101
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "02cb20da-55fe-4f06-8053-317716baa61e",
+        "type": "Table",
+        "position": {
+          "x": 884.0773077381942,
+          "y": 1164.2127454229644
+        },
+        "data": {
+          "label": "ConsultantContract",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_fe4c00f2-c39b-4a7c-9210-20c3965bf85f",
+              "name": "fk_Contract",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "b83842c3-a4d4-4e7a-8d46-c4898b394f2a",
+                "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+                "columns": [
+                  {
+                    "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                    "name": "ContractID",
+                    "type": "INT",
+                    "size": "50"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "730dc631-fed3-4c31-80e9-480d67552de7",
+              "name": "ProjectScope",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            },
+            {
+              "id": "acedc825-f81c-4774-a7e9-35cee5c4105d",
+              "name": "Fees",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "19d3b7c6-b00e-4b44-9e6a-6cf5760742ac",
+              "name": "PaymentSchedule",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "c9eebbea-58b4-43c8-932d-ee01edc6375c",
+        "type": "Table",
+        "position": {
+          "x": 218.37474778275947,
+          "y": 1152.8837401068483
+        },
+        "data": {
+          "label": "InternshipContract",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_14131b13-2e68-4780-ad33-b9e08f906235",
+              "name": "fk_Contract",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "d9a517f6-ebbb-418c-9b30-bc06c313f698",
+                "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+                "columns": [
+                  {
+                    "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                    "name": "ContractID",
+                    "type": "INT",
+                    "size": "50"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "79d6e3c2-fc99-482d-bf3c-f670a5f7a324",
+              "name": "Mentoring",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "100"
+            },
+            {
+              "id": "ca5a4204-54ad-4707-ba44-27fbd4567a05",
+              "name": "Evaluation",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            },
+            {
+              "id": "6e46b8ac-9fb1-487b-8972-f6e58378a4f5",
+              "name": "Stipend",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "3ace788e-9b9c-48a1-b8ea-87679e42932a",
+        "type": "Table",
+        "position": {
+          "x": 1363.4255188039424,
+          "y": 165.00259134470807
+        },
+        "data": {
+          "label": "Skill",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "9e56928d-7d64-4596-ab96-1016a37b82af",
+              "name": "SkillID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "140a47e9-357d-4bd7-85bf-dc8973f1dde8",
+              "name": "Name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "b53882fc-6833-4cfa-8b20-364c39dc254f",
+              "name": "Description",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 100
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "986c3cfb-f3b3-4c33-b5b0-6291b7c469dd",
+        "type": "Table",
+        "position": {
+          "x": 956.9647099355343,
+          "y": 163.88372494378373
+        },
+        "data": {
+          "label": "EmployeeSkill",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_fd6f1c8a-48f1-4875-bb56-8c19363513ec",
+              "name": "fk_Skill",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "289a3c70-bce7-4db5-a8ae-a3708fcbc1c8",
+                "sourceTableId": "3ace788e-9b9c-48a1-b8ea-87679e42932a",
+                "columns": [
+                  {
+                    "id": "fk_9e56928d-7d64-4596-ab96-1016a37b82af",
+                    "name": "SkillID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_43e9fe0f-9e9c-487d-aec1-c23a4e66ea5c",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "264b9cea-229d-4486-9a69-ccb9ada0708c",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 77
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "403eeb10-b8f3-42c6-919b-68c267499b9b",
+        "type": "Table",
+        "position": {
+          "x": 958.8610055656693,
+          "y": -69.63644317928697
+        },
+        "data": {
+          "label": "Verification",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "6d39a2d9-8767-4789-ab4c-9c54cf4b7202",
+              "name": "VerificationID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "b147bab7-3865-45b5-b615-24314e9fc55a",
+              "name": "Type",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isOptional": false
+            },
+            {
+              "id": "c9a39315-35c6-49de-b0b1-f163e76ede10",
+              "name": "Issuer",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "100",
+              "isOptional": false
+            },
+            {
+              "id": "ba0ddd2f-be07-489f-86cf-3d2e400f0392",
+              "name": "IssueDate",
+              "type": "DATE",
+              "position": 0,
+              "isOptional": false
+            },
+            {
+              "id": "9792b03f-d2a5-4233-a966-07a8bdf7fe69",
+              "name": "Expiry",
+              "type": "DATE",
+              "position": 0,
+              "isOptional": true
+            },
+            {
+              "id": "fk_814a8f18-8844-464d-89ba-968ac8477d6e",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "e82601f5-0795-408e-91bf-bb3ee9afa3d5",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 175
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "41be7c48-0276-4f04-a343-9278a1480d34",
+        "type": "Table",
+        "position": {
+          "x": -298.8270855709866,
+          "y": 432.8500537036779
+        },
+        "data": {
+          "label": "ShiftSchedule",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "9029ba57-ca4c-476a-b9e7-013f7afd54d7",
+              "name": "ShiftScheduleID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "95e20567-48b6-4741-b245-5c33ef06b304",
+              "name": "Name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "b1aa87fc-83f0-4297-ad0d-ba37336685d9",
+              "name": "Type",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "78456d24-0ae9-432b-a3c4-5f9735dfe468",
+              "name": "StartTime",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "8"
+            },
+            {
+              "id": "80a10b11-320c-40ec-bfe5-389691626f49",
+              "name": "EndTime",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "8"
+            },
+            {
+              "id": "cacefbda-eed9-407f-b05b-148e30deb391",
+              "name": "BreakPeriod",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "eb2c4977-811f-44ac-b7cd-53a48896dc18",
+              "name": "Date",
+              "type": "DATE",
+              "position": 0
+            },
+            {
+              "id": "981e9c32-4ea2-4be5-a292-afe8676ef167",
+              "name": "Status",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 224
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "db2eeeb5-f1e3-44b7-9aa2-9dd8e2b0d9e2",
+        "type": "Table",
+        "position": {
+          "x": 123.29469508766243,
+          "y": 311.80130087452807
+        },
+        "data": {
+          "label": "EmployeeShiftSchedule",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_0203fb3c-a9ea-4340-900a-6d5acbd1e99b",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "85fee1ca-0acc-4052-a870-7ea1e004821d",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_de26527b-99fe-41ef-96c2-df230ad1453c",
+              "name": "fk_ShiftSchedule",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "28a7c460-e8d9-4a8e-995e-fb77afe92ee3",
+                "sourceTableId": "41be7c48-0276-4f04-a343-9278a1480d34",
+                "columns": [
+                  {
+                    "id": "fk_9029ba57-ca4c-476a-b9e7-013f7afd54d7",
+                    "name": "ShiftScheduleID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 77
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+        "type": "Table",
+        "position": {
+          "x": -301.28374431238876,
+          "y": 12.08819221330495
+        },
+        "data": {
+          "label": "Attendance",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "c8cf6191-917b-49fa-8324-0b2340307780",
+              "name": "AttendanceID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "37267e98-b677-4300-b8f9-3a40123b3395",
+              "name": "EntryTime",
+              "type": "Custom",
+              "position": 0,
+              "isOptional": true
+            },
+            {
+              "id": "915194e7-3830-4877-8023-3943ba74729d",
+              "name": "ExitTime",
+              "type": "Custom",
+              "position": 0,
+              "isOptional": true
+            },
+            {
+              "id": "b0da5665-9ea9-4d4a-bd38-fffbf8de35d4",
+              "name": "Duration",
+              "type": "INT",
+              "position": 0,
+              "isOptional": true
+            },
+            {
+              "id": "5e9b63cb-4946-4661-a59e-2dfc21d97c81",
+              "name": "Status",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isOptional": false
+            },
+            {
+              "id": "2f62f5ff-b5c3-4bee-91d6-dfdbd62b1930",
+              "name": "LoginMethod",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "1c6ca8a9-534a-43f7-961b-0c8ee51c8e70",
+              "name": "LogoutMethod",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "fk_3e4e40a0-2555-4417-b61e-196f10844825",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "d2f97b3e-624b-47a6-8a94-14718ba1e0ee",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fk_d43f9c69-c935-42e1-bc70-a145788090c7",
+              "name": "fk_ShiftSchedule",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "6eebf5ef-1f60-4dd3-899a-fce14045855a",
+                "sourceTableId": "41be7c48-0276-4f04-a343-9278a1480d34",
+                "columns": [
+                  {
+                    "id": "fk_9029ba57-ca4c-476a-b9e7-013f7afd54d7",
+                    "name": "ShiftScheduleID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 250
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "29801dd5-cb97-49ec-bf70-a02d0142924f",
+        "type": "Table",
+        "position": {
+          "x": 114.2509905605678,
+          "y": 52.46825353393163
+        },
+        "data": {
+          "label": "AttendanceLog",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "f0e55cfe-84a4-448e-8e34-09ef2009bb21",
+              "name": "AttendanceLogID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_667f6ca1-9907-4da3-a993-b59cefc3b015",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "6e82ea85-6f3a-4854-8f0a-400f17a05086",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "UserID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "57c28b61-96e6-4cdc-9da8-971c7eb24546",
+              "name": "ChangeTimestamp",
+              "type": "Custom",
+              "position": 0
+            },
+            {
+              "id": "abb04ec5-9bd9-4cb1-bd97-d2ba334ce13e",
+              "name": "ModificationReason",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            },
+            {
+              "id": "fk_c165d5f7-cd9f-4819-b714-d5fa9c3dfdd0",
+              "name": "fk_Attendance",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "6a96230d-b950-4846-93b5-fb3fe471fd9f",
+                "sourceTableId": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+                "columns": [
+                  {
+                    "id": "fk_c8cf6191-917b-49fa-8324-0b2340307780",
+                    "name": "AttendanceID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 150
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "8fad044a-f97c-4c5b-ae06-08d49cd1329e",
+        "type": "Table",
+        "position": {
+          "x": -1075.0944646313328,
+          "y": 50.70651369676865
+        },
+        "data": {
+          "label": "Exception",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "f2aabed3-4af4-4dae-ac5d-09d692e4c940",
+              "name": "ExceptionID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "dee751dd-81e0-4b37-8789-2db85fc5dee3",
+              "name": "Name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "bfd1ddaa-12f2-4d0b-ba6a-a0fec4e27c8b",
+              "name": "CategoryColumn",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "17588490-3ef5-4c5d-84bf-7680bdaf5c14",
+              "name": "Date",
+              "type": "DATE",
+              "position": 0
+            },
+            {
+              "id": "8825c3c9-0b35-47cb-a3bf-3c166732d1e1",
+              "name": "Status",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 150
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "847b05c9-0e50-4598-b228-d7223e6fbbac",
+        "type": "Table",
+        "position": {
+          "x": -674.896723831102,
+          "y": 50.561332993710366
+        },
+        "data": {
+          "label": "AttendanceException",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_d4286600-e63b-4534-866b-3d5be3c99347",
+              "name": "fk_Exception",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "5951ceed-fb7f-4e35-92e5-4c0f0c033ace",
+                "sourceTableId": "8fad044a-f97c-4c5b-ae06-08d49cd1329e",
+                "columns": [
+                  {
+                    "id": "fk_f2aabed3-4af4-4dae-ac5d-09d692e4c940",
+                    "name": "ExceptionID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_920919b6-2499-4caf-a17a-9592ffa9ecb4",
+              "name": "fk_Attendance",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "b6b01385-fc9d-435c-9d80-277336787e11",
+                "sourceTableId": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+                "columns": [
+                  {
+                    "id": "fk_c8cf6191-917b-49fa-8324-0b2340307780",
+                    "name": "AttendanceID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 77
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+        "type": "Table",
+        "position": {
+          "x": 1539.1949433654572,
+          "y": 494.0587156189732
+        },
+        "data": {
+          "label": "Leave",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+              "name": "LeaveID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "d4b70a4c-5bc6-4092-9552-0d9d71cb9632",
+              "name": "Type",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "d1ec6287-3de9-4bab-b75b-1143b38665a3",
+              "name": "Description",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 100
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "9cf5a8d0-2bc4-48bd-83f7-8fa73513358b",
+        "type": "Table",
+        "position": {
+          "x": 1194.0423736951004,
+          "y": 528.8115580778627
+        },
+        "data": {
+          "label": "VacationLeave",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_c0c4fbcb-3528-4ae2-a0b9-6bca650c9619",
+              "name": "fk_Leave",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "9c534c90-3050-4312-a112-5457fcb57ab4",
+                "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+                "columns": [
+                  {
+                    "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                    "name": "LeaveID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "66f3bc4e-915c-46c5-b0bc-b10e93cddbf7",
+              "name": "CarryOverEligibility",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "112b558b-afc2-4318-9672-7432f72411b9",
+              "name": "ApprovingManager",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "100",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "d2e624b6-94d4-421f-8d9c-36dfb8b81c85",
+              "name": "SickLeave",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "cb54f616-4021-45f6-9f69-db61d33c0d1b",
+        "type": "Table",
+        "position": {
+          "x": 1960.7390455760185,
+          "y": 334.3035612655593
+        },
+        "data": {
+          "label": "SickLeave",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_5b1a17ff-07b6-4d8e-af8a-37eeb0248e1d",
+              "name": "fk_Leave",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "e6de7350-b91d-4c5a-882d-409ad38f4c39",
+                "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+                "columns": [
+                  {
+                    "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                    "name": "LeaveID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "6457dd5b-2024-4bc2-804b-82d38a336db9",
+              "name": "MedicalCertificationRequired",
+              "type": "CHAR(n)",
+              "position": 0,
+              "size": "1",
+              "isOptional": false
+            },
+            {
+              "id": "4ba5d2ac-5149-4b35-b508-9becb51c7685",
+              "name": "PhysicianID",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isOptional": true
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 117
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "9ab929df-cf3d-4055-a833-1bbac5c1b99f",
+        "type": "Table",
+        "position": {
+          "x": 1592.8762415238023,
+          "y": 719.781101734924
+        },
+        "data": {
+          "label": "ProbationLeave",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_b830c08f-4bc1-4ee5-9b5e-440e710ba840",
+              "name": "fk_Leave",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "2f25d57b-1474-4f04-a595-b47b97f9ebc4",
+                "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+                "columns": [
+                  {
+                    "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                    "name": "LeaveID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "6e1588cd-ba7f-4ab0-9157-74ffb74f2c31",
+              "name": "EligibilityStartDate",
+              "type": "DATE",
+              "position": 0
+            },
+            {
+              "id": "f7145423-8ad1-4c0f-85ad-abe375e7942c",
+              "name": "ProbationPeriod",
+              "type": "INT",
+              "position": 0
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 101
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "abc228f3-9c7c-4e2a-9083-0305a72c24f0",
+        "type": "Table",
+        "position": {
+          "x": 1621.6528339748897,
+          "y": 286.8696695001597
+        },
+        "data": {
+          "label": "HolidayLeave",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "48dd9b69-5b28-49df-931b-606c1525312f",
+              "name": "HolidayName",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "isPrimaryKey": false,
+              "size": "50"
+            },
+            {
+              "id": "fk_14eaca04-03c7-44be-9633-0de1e3e63b38",
+              "name": "fk_Leave",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "ddab5f78-03c1-4f3c-83fa-571816a4bbb5",
+                "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+                "columns": [
+                  {
+                    "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                    "name": "LeaveID",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "f163c841-1d02-4d17-b72c-af6d35958888",
+              "name": "OfficialRecognition",
+              "type": "CHAR(n)",
+              "position": 0,
+              "size": "1"
+            },
+            {
+              "id": "27536be9-e748-4cb6-8673-0bfb1361626b",
+              "name": "RegionalScope",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "544ba0cc-2f3d-48f1-ad74-3706c199fe98",
+        "type": "Table",
+        "position": {
+          "x": 1191.0168513134063,
+          "y": 284.0346097603205
+        },
+        "data": {
+          "label": "LeaveRequest",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "7dcb1f19-38ca-4156-8ea7-bf7d2695d943",
+              "name": "LeaveRequestID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "48046e2f-0da8-4177-aa5b-7b50028a51a2",
+              "name": "Duration",
+              "type": "INT",
+              "position": 0,
+              "isOptional": false
+            },
+            {
+              "id": "ee9c6551-f275-4928-9804-513e254a1084",
+              "name": "Justification",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000",
+              "isOptional": false
+            },
+            {
+              "id": "cdaf41a6-df7d-4378-a017-08657e9b68c9",
+              "name": "Status",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50",
+              "isOptional": false
+            },
+            {
+              "id": "7e793c2e-111d-4c2b-ae70-39a02530e67f",
+              "name": "ApprovalTime",
+              "type": "Custom",
+              "position": 0,
+              "isOptional": true
+            },
+            {
+              "id": "fk_041d3fb1-7e26-4a20-bdb4-ea3d00c43559",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "0d2b3d1c-3370-4c22-b4a4-5e5e4723e0a1",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "fk_f30a94f9-83b2-4448-9a96-144ec9be2764",
+              "name": "fk_Leave",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "cf5f1089-3d92-4048-a204-1b569d752d6e",
+                "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+                "columns": [
+                  {
+                    "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                    "name": "LeaveID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 200
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "7d59d08a-a24f-41ad-a6c7-75e600d4146d",
+        "type": "Table",
+        "position": {
+          "x": 1952.1882575108675,
+          "y": 547.2646138318997
+        },
+        "data": {
+          "label": "LeavePolicy",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "66030455-4cdc-4fa7-91c8-c3fb4349dcd3",
+              "name": "LeavePolicyID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "77ad0eb8-c0f3-47fe-aaab-0a3b5cbcb0dc",
+              "name": "Name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "273006f6-bf14-41e0-969b-c68048e7fcdb",
+              "name": "Purpose",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            },
+            {
+              "id": "398a3431-6574-4a59-b7ae-83e7fed1e97f",
+              "name": "EligibilityRules",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "5000"
+            },
+            {
+              "id": "2f049d96-65ce-47ad-a8e6-428e14bb5db0",
+              "name": "NoticePeriod",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "fk_c84f2015-0517-4904-984f-889dfd23f9d1",
+              "name": "fk_Leave",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "c4bf5982-2ab5-4c97-be76-9ca98f06d694",
+                "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+                "columns": [
+                  {
+                    "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                    "name": "LeaveID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 175
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "32a43f26-0edd-4014-b08a-a250055cd268",
+        "type": "Table",
+        "position": {
+          "x": 963,
+          "y": -412
+        },
+        "data": {
+          "label": "Payroll",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "9e9b93e7-abab-4b65-b8e9-b32603bcf2f0",
+              "name": "PayrollID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "71057805-53cf-492f-81b7-945e5c6ef2e7",
+              "name": "PeriodStart",
+              "type": "DATE",
+              "position": 0
+            },
+            {
+              "id": "3be0d165-b6f3-4e8a-9af2-39eea3e9a949",
+              "name": "PeriodEnd",
+              "type": "DATE",
+              "position": 0
+            },
+            {
+              "id": "c35df31e-33c7-4049-a841-16211bb234fe",
+              "name": "BaseAmount",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "8aa56de7-ca58-480a-91cd-25721cc15c8f",
+              "name": "ActualPay",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "b65337ea-58a9-4b49-b12d-78f0f781c81b",
+              "name": "Adjustments",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "3bb002be-92c2-4a95-95b0-769074267275",
+              "name": "Taxes",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "33234c96-b0da-4bcc-99df-dd69274f884c",
+              "name": "Contributions",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "41cb7fa2-3ffa-4884-929c-2c8ed9ce83c9",
+              "name": "NetSalary",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "10,2"
+            },
+            {
+              "id": "fk_31ecb812-5dfd-4d79-b34a-70f374ed0a0d",
+              "name": "fk_Employee",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "2ccbe1a8-b6fe-4c1f-83ed-450a722c0f36",
+                "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+                "columns": [
+                  {
+                    "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                    "name": "EmployeeID",
+                    "type": "INT"
+                  }
+                ]
+              }
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 274
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->0f70b454-ebd4-4317-adf5-735f68081fd9_b4d954e5-1b24-4a76-9e4a-9e4f7098bae8",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-b4d954e5-1b24-4a76-9e4a-9e4f7098bae8",
+        "target": "0f70b454-ebd4-4317-adf5-735f68081fd9",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "b4d954e5-1b24-4a76-9e4a-9e4f7098bae8",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->69a65c32-61f4-4cf0-9de0-fa37b7cc7688_504821db-fd74-457c-b47b-213903bdb0d4",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-504821db-fd74-457c-b47b-213903bdb0d4",
+        "target": "69a65c32-61f4-4cf0-9de0-fa37b7cc7688",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "504821db-fd74-457c-b47b-213903bdb0d4",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->44f23f57-4582-422e-8b2d-a43105dd8367_82fa7454-6df4-4314-ad97-e928be012736",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-82fa7454-6df4-4314-ad97-e928be012736",
+        "target": "44f23f57-4582-422e-8b2d-a43105dd8367",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "82fa7454-6df4-4314-ad97-e928be012736",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "5ccacefb-3211-4028-85de-898368f45b18->1ec713ac-1f0e-47b8-bad0-1a1f7f401e33_019c5cee-b6f6-4e91-a03c-af6a8949eb85",
+        "type": "Relational",
+        "source": "5ccacefb-3211-4028-85de-898368f45b18",
+        "targetHandle": "foreign-key-handle-019c5cee-b6f6-4e91-a03c-af6a8949eb85",
+        "target": "1ec713ac-1f0e-47b8-bad0-1a1f7f401e33",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "019c5cee-b6f6-4e91-a03c-af6a8949eb85",
+            "sourceTableId": "5ccacefb-3211-4028-85de-898368f45b18",
+            "columns": [
+              {
+                "id": "fk_97600c6f-dd3f-4f7a-b6d4-9db80e486d58",
+                "name": "RoleID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->1ec713ac-1f0e-47b8-bad0-1a1f7f401e33_0e7d0de1-210a-49c1-9d50-2ca02b4af54e",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-0e7d0de1-210a-49c1-9d50-2ca02b4af54e",
+        "target": "1ec713ac-1f0e-47b8-bad0-1a1f7f401e33",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "0e7d0de1-210a-49c1-9d50-2ca02b4af54e",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->08085b78-127a-4e25-8813-9084ab4ddb38_fbcdb694-d790-4397-bad9-2b9f003da59d",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-fbcdb694-d790-4397-bad9-2b9f003da59d",
+        "target": "08085b78-127a-4e25-8813-9084ab4ddb38",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "fbcdb694-d790-4397-bad9-2b9f003da59d",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "86b39d40-54e0-470a-bd11-20260879183d->013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e_9713ca20-0970-4a65-945b-1d3717a15e8c",
+        "type": "Relational",
+        "source": "86b39d40-54e0-470a-bd11-20260879183d",
+        "targetHandle": "foreign-key-handle-9713ca20-0970-4a65-945b-1d3717a15e8c",
+        "target": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "9713ca20-0970-4a65-945b-1d3717a15e8c",
+            "sourceTableId": "86b39d40-54e0-470a-bd11-20260879183d",
+            "columns": [
+              {
+                "id": "fk_f70062dd-bbf8-4a1d-9e57-889ea8c14fee",
+                "name": "DepartmentID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "adfd4bef-d8ae-44c3-928a-27ccdd9cf7e1->013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e_97d90e66-ac1b-4415-93b3-d6eadf24eae1",
+        "type": "Relational",
+        "source": "adfd4bef-d8ae-44c3-928a-27ccdd9cf7e1",
+        "targetHandle": "foreign-key-handle-97d90e66-ac1b-4415-93b3-d6eadf24eae1",
+        "target": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "97d90e66-ac1b-4415-93b3-d6eadf24eae1",
+            "sourceTableId": "adfd4bef-d8ae-44c3-928a-27ccdd9cf7e1",
+            "columns": [
+              {
+                "id": "fk_b80128e3-c995-47d8-a30c-4733dc327523",
+                "name": "PositionID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "f82a31ad-51da-4af0-b02f-273c314fdcee->013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e_e4f0c3dc-a989-4860-a04d-885cafa97273",
+        "type": "Relational",
+        "source": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+        "targetHandle": "foreign-key-handle-e4f0c3dc-a989-4860-a04d-885cafa97273",
+        "target": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "e4f0c3dc-a989-4860-a04d-885cafa97273",
+            "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+            "columns": [
+              {
+                "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                "name": "ContractID",
+                "type": "INT",
+                "size": "50"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "f82a31ad-51da-4af0-b02f-273c314fdcee->c2d17585-dea1-4bda-95f3-0977fa026550_c8dbb2c6-f8ce-4490-8cd6-81258945c89d",
+        "type": "Relational",
+        "source": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+        "targetHandle": "foreign-key-handle-c8dbb2c6-f8ce-4490-8cd6-81258945c89d",
+        "target": "c2d17585-dea1-4bda-95f3-0977fa026550",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "c8dbb2c6-f8ce-4490-8cd6-81258945c89d",
+            "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+            "columns": [
+              {
+                "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                "name": "ContractID",
+                "type": "INT",
+                "size": "50"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "f82a31ad-51da-4af0-b02f-273c314fdcee->70459b58-5903-4274-99b8-706fe9b1d569_6b62eef7-3757-4998-ba5e-707d65fd3207",
+        "type": "Relational",
+        "source": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+        "targetHandle": "foreign-key-handle-6b62eef7-3757-4998-ba5e-707d65fd3207",
+        "target": "70459b58-5903-4274-99b8-706fe9b1d569",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "6b62eef7-3757-4998-ba5e-707d65fd3207",
+            "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+            "columns": [
+              {
+                "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                "name": "ContractID",
+                "type": "INT",
+                "size": "50"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "f82a31ad-51da-4af0-b02f-273c314fdcee->02cb20da-55fe-4f06-8053-317716baa61e_b83842c3-a4d4-4e7a-8d46-c4898b394f2a",
+        "type": "Relational",
+        "source": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+        "targetHandle": "foreign-key-handle-b83842c3-a4d4-4e7a-8d46-c4898b394f2a",
+        "target": "02cb20da-55fe-4f06-8053-317716baa61e",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "b83842c3-a4d4-4e7a-8d46-c4898b394f2a",
+            "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+            "columns": [
+              {
+                "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                "name": "ContractID",
+                "type": "INT",
+                "size": "50"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "f82a31ad-51da-4af0-b02f-273c314fdcee->c9eebbea-58b4-43c8-932d-ee01edc6375c_d9a517f6-ebbb-418c-9b30-bc06c313f698",
+        "type": "Relational",
+        "source": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+        "targetHandle": "foreign-key-handle-d9a517f6-ebbb-418c-9b30-bc06c313f698",
+        "target": "c9eebbea-58b4-43c8-932d-ee01edc6375c",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "d9a517f6-ebbb-418c-9b30-bc06c313f698",
+            "sourceTableId": "f82a31ad-51da-4af0-b02f-273c314fdcee",
+            "columns": [
+              {
+                "id": "fk_1b836bfd-ce07-480b-b1de-69904bda85f7",
+                "name": "ContractID",
+                "type": "INT",
+                "size": "50"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "3ace788e-9b9c-48a1-b8ea-87679e42932a->986c3cfb-f3b3-4c33-b5b0-6291b7c469dd_289a3c70-bce7-4db5-a8ae-a3708fcbc1c8",
+        "type": "Relational",
+        "source": "3ace788e-9b9c-48a1-b8ea-87679e42932a",
+        "targetHandle": "foreign-key-handle-289a3c70-bce7-4db5-a8ae-a3708fcbc1c8",
+        "target": "986c3cfb-f3b3-4c33-b5b0-6291b7c469dd",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "289a3c70-bce7-4db5-a8ae-a3708fcbc1c8",
+            "sourceTableId": "3ace788e-9b9c-48a1-b8ea-87679e42932a",
+            "columns": [
+              {
+                "id": "fk_9e56928d-7d64-4596-ab96-1016a37b82af",
+                "name": "SkillID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->986c3cfb-f3b3-4c33-b5b0-6291b7c469dd_264b9cea-229d-4486-9a69-ccb9ada0708c",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-264b9cea-229d-4486-9a69-ccb9ada0708c",
+        "target": "986c3cfb-f3b3-4c33-b5b0-6291b7c469dd",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "264b9cea-229d-4486-9a69-ccb9ada0708c",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->403eeb10-b8f3-42c6-919b-68c267499b9b_e82601f5-0795-408e-91bf-bb3ee9afa3d5",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-e82601f5-0795-408e-91bf-bb3ee9afa3d5",
+        "target": "403eeb10-b8f3-42c6-919b-68c267499b9b",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "e82601f5-0795-408e-91bf-bb3ee9afa3d5",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->db2eeeb5-f1e3-44b7-9aa2-9dd8e2b0d9e2_85fee1ca-0acc-4052-a870-7ea1e004821d",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-85fee1ca-0acc-4052-a870-7ea1e004821d",
+        "target": "db2eeeb5-f1e3-44b7-9aa2-9dd8e2b0d9e2",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "85fee1ca-0acc-4052-a870-7ea1e004821d",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "41be7c48-0276-4f04-a343-9278a1480d34->db2eeeb5-f1e3-44b7-9aa2-9dd8e2b0d9e2_28a7c460-e8d9-4a8e-995e-fb77afe92ee3",
+        "type": "Relational",
+        "source": "41be7c48-0276-4f04-a343-9278a1480d34",
+        "targetHandle": "foreign-key-handle-28a7c460-e8d9-4a8e-995e-fb77afe92ee3",
+        "target": "db2eeeb5-f1e3-44b7-9aa2-9dd8e2b0d9e2",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "28a7c460-e8d9-4a8e-995e-fb77afe92ee3",
+            "sourceTableId": "41be7c48-0276-4f04-a343-9278a1480d34",
+            "columns": [
+              {
+                "id": "fk_9029ba57-ca4c-476a-b9e7-013f7afd54d7",
+                "name": "ShiftScheduleID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->55cfe1d9-9551-4b3d-a797-bbe60999b954_d2f97b3e-624b-47a6-8a94-14718ba1e0ee",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-d2f97b3e-624b-47a6-8a94-14718ba1e0ee",
+        "target": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "d2f97b3e-624b-47a6-8a94-14718ba1e0ee",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "41be7c48-0276-4f04-a343-9278a1480d34->55cfe1d9-9551-4b3d-a797-bbe60999b954_6eebf5ef-1f60-4dd3-899a-fce14045855a",
+        "type": "Relational",
+        "source": "41be7c48-0276-4f04-a343-9278a1480d34",
+        "targetHandle": "foreign-key-handle-6eebf5ef-1f60-4dd3-899a-fce14045855a",
+        "target": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "6eebf5ef-1f60-4dd3-899a-fce14045855a",
+            "sourceTableId": "41be7c48-0276-4f04-a343-9278a1480d34",
+            "columns": [
+              {
+                "id": "fk_9029ba57-ca4c-476a-b9e7-013f7afd54d7",
+                "name": "ShiftScheduleID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->29801dd5-cb97-49ec-bf70-a02d0142924f_6e82ea85-6f3a-4854-8f0a-400f17a05086",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-6e82ea85-6f3a-4854-8f0a-400f17a05086",
+        "target": "29801dd5-cb97-49ec-bf70-a02d0142924f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "6e82ea85-6f3a-4854-8f0a-400f17a05086",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "55cfe1d9-9551-4b3d-a797-bbe60999b954->29801dd5-cb97-49ec-bf70-a02d0142924f_6a96230d-b950-4846-93b5-fb3fe471fd9f",
+        "type": "Relational",
+        "source": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+        "targetHandle": "foreign-key-handle-6a96230d-b950-4846-93b5-fb3fe471fd9f",
+        "target": "29801dd5-cb97-49ec-bf70-a02d0142924f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "6a96230d-b950-4846-93b5-fb3fe471fd9f",
+            "sourceTableId": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+            "columns": [
+              {
+                "id": "fk_c8cf6191-917b-49fa-8324-0b2340307780",
+                "name": "AttendanceID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "8fad044a-f97c-4c5b-ae06-08d49cd1329e->847b05c9-0e50-4598-b228-d7223e6fbbac_5951ceed-fb7f-4e35-92e5-4c0f0c033ace",
+        "type": "Relational",
+        "source": "8fad044a-f97c-4c5b-ae06-08d49cd1329e",
+        "targetHandle": "foreign-key-handle-5951ceed-fb7f-4e35-92e5-4c0f0c033ace",
+        "target": "847b05c9-0e50-4598-b228-d7223e6fbbac",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "5951ceed-fb7f-4e35-92e5-4c0f0c033ace",
+            "sourceTableId": "8fad044a-f97c-4c5b-ae06-08d49cd1329e",
+            "columns": [
+              {
+                "id": "fk_f2aabed3-4af4-4dae-ac5d-09d692e4c940",
+                "name": "ExceptionID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "55cfe1d9-9551-4b3d-a797-bbe60999b954->847b05c9-0e50-4598-b228-d7223e6fbbac_b6b01385-fc9d-435c-9d80-277336787e11",
+        "type": "Relational",
+        "source": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+        "targetHandle": "foreign-key-handle-b6b01385-fc9d-435c-9d80-277336787e11",
+        "target": "847b05c9-0e50-4598-b228-d7223e6fbbac",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "b6b01385-fc9d-435c-9d80-277336787e11",
+            "sourceTableId": "55cfe1d9-9551-4b3d-a797-bbe60999b954",
+            "columns": [
+              {
+                "id": "fk_c8cf6191-917b-49fa-8324-0b2340307780",
+                "name": "AttendanceID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f->9cf5a8d0-2bc4-48bd-83f7-8fa73513358b_9c534c90-3050-4312-a112-5457fcb57ab4",
+        "type": "Relational",
+        "source": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+        "targetHandle": "foreign-key-handle-9c534c90-3050-4312-a112-5457fcb57ab4",
+        "target": "9cf5a8d0-2bc4-48bd-83f7-8fa73513358b",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "9c534c90-3050-4312-a112-5457fcb57ab4",
+            "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+            "columns": [
+              {
+                "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                "name": "LeaveID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f->cb54f616-4021-45f6-9f69-db61d33c0d1b_e6de7350-b91d-4c5a-882d-409ad38f4c39",
+        "type": "Relational",
+        "source": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+        "targetHandle": "foreign-key-handle-e6de7350-b91d-4c5a-882d-409ad38f4c39",
+        "target": "cb54f616-4021-45f6-9f69-db61d33c0d1b",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "e6de7350-b91d-4c5a-882d-409ad38f4c39",
+            "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+            "columns": [
+              {
+                "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                "name": "LeaveID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f->9ab929df-cf3d-4055-a833-1bbac5c1b99f_2f25d57b-1474-4f04-a595-b47b97f9ebc4",
+        "type": "Relational",
+        "source": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+        "targetHandle": "foreign-key-handle-2f25d57b-1474-4f04-a595-b47b97f9ebc4",
+        "target": "9ab929df-cf3d-4055-a833-1bbac5c1b99f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "2f25d57b-1474-4f04-a595-b47b97f9ebc4",
+            "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+            "columns": [
+              {
+                "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                "name": "LeaveID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f->abc228f3-9c7c-4e2a-9083-0305a72c24f0_ddab5f78-03c1-4f3c-83fa-571816a4bbb5",
+        "type": "Relational",
+        "source": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+        "targetHandle": "foreign-key-handle-ddab5f78-03c1-4f3c-83fa-571816a4bbb5",
+        "target": "abc228f3-9c7c-4e2a-9083-0305a72c24f0",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "ddab5f78-03c1-4f3c-83fa-571816a4bbb5",
+            "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+            "columns": [
+              {
+                "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                "name": "LeaveID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->544ba0cc-2f3d-48f1-ad74-3706c199fe98_0d2b3d1c-3370-4c22-b4a4-5e5e4723e0a1",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-0d2b3d1c-3370-4c22-b4a4-5e5e4723e0a1",
+        "target": "544ba0cc-2f3d-48f1-ad74-3706c199fe98",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "0d2b3d1c-3370-4c22-b4a4-5e5e4723e0a1",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f->544ba0cc-2f3d-48f1-ad74-3706c199fe98_cf5f1089-3d92-4048-a204-1b569d752d6e",
+        "type": "Relational",
+        "source": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+        "targetHandle": "foreign-key-handle-cf5f1089-3d92-4048-a204-1b569d752d6e",
+        "target": "544ba0cc-2f3d-48f1-ad74-3706c199fe98",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "cf5f1089-3d92-4048-a204-1b569d752d6e",
+            "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+            "columns": [
+              {
+                "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                "name": "LeaveID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f->7d59d08a-a24f-41ad-a6c7-75e600d4146d_c4bf5982-2ab5-4c97-be76-9ca98f06d694",
+        "type": "Relational",
+        "source": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+        "targetHandle": "foreign-key-handle-c4bf5982-2ab5-4c97-be76-9ca98f06d694",
+        "target": "7d59d08a-a24f-41ad-a6c7-75e600d4146d",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "c4bf5982-2ab5-4c97-be76-9ca98f06d694",
+            "sourceTableId": "cdc268ea-97a1-42f3-a42f-415c4e2dd99f",
+            "columns": [
+              {
+                "id": "fk_c17a0936-9bf9-44d1-8ab2-3867b923b18d",
+                "name": "LeaveID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e->32a43f26-0edd-4014-b08a-a250055cd268_2ccbe1a8-b6fe-4c1f-83ed-450a722c0f36",
+        "type": "Relational",
+        "source": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+        "targetHandle": "foreign-key-handle-2ccbe1a8-b6fe-4c1f-83ed-450a722c0f36",
+        "target": "32a43f26-0edd-4014-b08a-a250055cd268",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "2ccbe1a8-b6fe-4c1f-83ed-450a722c0f36",
+            "sourceTableId": "013ffbbd-bc0b-40e3-b5bb-3fabf6b3c19e",
+            "columns": [
+              {
+                "id": "fk_e3ef489f-b451-41d8-917e-a40569194126",
+                "name": "EmployeeID",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "viewport": {
+      "x": 263.3893210569646,
+      "y": 63.475401961072805,
+      "zoom": 0.5728065933797986
+    }
+  },
+  "name": "project",
+  "folder": {
+    "name": "Diagrams",
+    "folderType": 1,
+    "depth": 0,
+    "id": 100635
+  },
+  "id": 113399,
+  "updatedAtTimestamp": 1760827470
+}
