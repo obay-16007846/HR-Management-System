@@ -268,9 +268,33 @@ HRMS-Database-Project/
 │ ├── SQLQuery2_INSERTION.sql
 │ └── SQLQuery3_PROCEDURE.sql
 │
+├── HRMS MS3/
+│   │   ├── .vs/
+│   │   ├── bin/
+│   │   ├── obj/
+│   │   ├── HRMSMS3.sln
+│   │   ├── HRMSMS3.sqlproj
+│   │   └── HRMSMS3.sqlproj.user
+│   │
+│   └── Source/
+│       └── HRMS.Web/
+│           ├── bin/
+│           ├── Controllers/
+│           ├── Data/
+│           ├── Models/
+│           ├── obj/
+│           ├── Properties/
+│           ├── Views/
+│           ├── wwwroot/
+│           ├── appsettings.json
+│           ├── appsettings.Development.json
+│           ├── HRMS.Web.csproj
+│           └── Program.cs
+|
 ├── README.md
 └── .gitignore
 ```
+
 
 
 
