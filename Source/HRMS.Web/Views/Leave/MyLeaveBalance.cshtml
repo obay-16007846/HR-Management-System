@@ -1,0 +1,59 @@
+@model List<LeaveEntitlement>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Leave Balance";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">My Leave Balance</h2>
+    </div>
+
+    <div style="margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <a asp-action="SubmitRequest" class="btn btn-primary">Submit New Leave Request</a>
+        <a asp-action="MyLeaveHistory" class="btn btn-secondary">View Leave History</a>
+    </div>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>No leave entitlements found. Please contact HR to set up your leave entitlements.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Leave Type</th>
+                    <th>Entitlement (Days)</th>
+                    <th>Used (Days)</th>
+                    <th>Remaining (Days)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var entitlement in Model)
+                {
+                    <tr>
+                        <td><strong>@entitlement.LeaveType</strong></td>
+                        <td>@entitlement.Entitlement</td>
+                        <td>@entitlement.Used</td>
+                        <td>
+                            <strong class="@(entitlement.Remaining < 5 ? "text-warning" : "text-success")">
+                                @entitlement.Remaining
+                            </strong>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="alert alert-info" style="margin-top: 20px;">
+            <strong>Note:</strong> Leave balances are calculated based on approved and finalized leave requests. 
+            Pending requests are not deducted from your balance until approved.
+        </div>
+    }
+
+    <div style="margin-top: 20px;">
+        <a href="/Account/LoginSuccess">Back to Dashboard</a>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Leave Policy";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Create Leave Policy</h2>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-error">@ViewBag.Error</div>
+    }
+
+    <form method="post" asp-action="CreateLeavePolicy">
+        <div class="form-group">
+            <label for="name">Policy Name *</label>
+            <input type="text" id="name" name="name" required class="form-control" placeholder="e.g., Annual Leave Policy" />
+        </div>
+
+        <div class="form-group">
+            <label for="purpose">Purpose</label>
+            <textarea id="purpose" name="purpose" rows="3" class="form-control" placeholder="Purpose of this policy"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="eligibilityRules">Eligibility Rules</label>
+            <textarea id="eligibilityRules" name="eligibilityRules" rows="4" class="form-control" placeholder="e.g., Minimum 6 months of service, Full-time employees only"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="noticePeriod">Notice Period (Days)</label>
+            <input type="number" id="noticePeriod" name="noticePeriod" min="0" value="0" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="specialLeaveType">Special Leave Type</label>
+            <select id="specialLeaveType" name="specialLeaveType" class="form-control">
+                <option value="">-- Select Leave Type --</option>
+                @if (ViewBag.LeaveTypes != null)
+                {
+                    @foreach (var leaveType in (List<Leave>)ViewBag.LeaveTypes)
+                    {
+                        <option value="@leaveType.LeaveType">@leaveType.LeaveType</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="resetOnNewYear" value="true" />
+                Reset on New Year
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Policy</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="ManageLeaveTypes">Back to Manage Leave Types</a>
+    </div>
+</div>
+

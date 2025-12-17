@@ -1,0 +1,35 @@
+@model Employee
+
+<h2>Edit Employee Profile (HR)</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="EmployeeId" />
+
+    Phone:<br />
+    <input asp-for="Phone" /><br /><br />
+
+    Address:<br />
+    <input asp-for="Address" /><br /><br />
+
+    Emergency Contact Name:<br />
+    <input asp-for="EmergencyContactName" /><br /><br />
+
+    Emergency Contact Phone:<br />
+    <input asp-for="EmergencyContactPhone" /><br /><br />
+
+    Relationship:<br />
+    <input asp-for="Relationship" /><br /><br />
+
+    Biography:<br />
+    <textarea asp-for="Biography"></textarea><br /><br />
+
+    Account Status:<br />
+    <select asp-for="AccountStatus">
+        <option>Active</option>
+        <option>Suspended</option>
+        <option>Inactive</option>
+    </select><br /><br />
+
+    <button type="submit">Save Changes</button>
+</form>
+

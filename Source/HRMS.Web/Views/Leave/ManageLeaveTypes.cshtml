@@ -1,0 +1,55 @@
+@model List<Leave>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Manage Leave Types";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Manage Leave Types</h2>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <div style="margin-bottom: 20px;">
+        <a asp-action="CreateLeaveType" class="btn btn-primary">Create New Leave Type</a>
+        <a asp-action="CreateLeavePolicy" class="btn btn-secondary">Create Leave Policy</a>
+    </div>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>No leave types found. Create your first leave type.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Leave ID</th>
+                    <th>Leave Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var leave in Model)
+                {
+                    <tr>
+                        <td>@leave.LeaveId</td>
+                        <td><strong>@leave.LeaveType</strong></td>
+                        <td>@leave.LeaveDescription</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <div style="margin-top: 20px;">
+        <a asp-action="AssignLeaveEntitlement" class="btn btn-info">Assign Leave Entitlements</a>
+        <a asp-action="AdjustLeaveEntitlement" class="btn btn-warning">Adjust Leave Entitlements</a>
+        <a href="/Account/LoginSuccess">Back to Dashboard</a>
+    </div>
+</div>
+

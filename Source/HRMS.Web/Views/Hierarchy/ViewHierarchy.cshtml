@@ -1,0 +1,104 @@
+@model List<HierarchyNode>
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 class="card-title">Organizational Hierarchy</h2>
+    </div>
+
+    <div style="padding: 24px;">
+        @if (Model != null && Model.Count > 0)
+        {
+            <div style="margin-bottom: 24px;">
+                <input type="text" id="searchInput" placeholder="Search by name, department, or manager..." 
+                       style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem;" />
+            </div>
+
+            <div id="hierarchyContainer">
+                @{
+                    var groupedByDept = Model.GroupBy(e => e.DepartmentName ?? "Unassigned").OrderBy(g => g.Key);
+                }
+                @foreach (var deptGroup in groupedByDept)
+                {
+                    <div class="department-group" style="margin-bottom: 32px;">
+                        <h3 style="margin-bottom: 16px; padding: 12px; background-color: #f3f4f6; border-radius: 8px; color: #1f2937;">
+                            📁 @deptGroup.Key
+                        </h3>
+                        <div style="display: grid; gap: 12px; margin-left: 24px;">
+                            @foreach (var employee in deptGroup.OrderBy(e => e.EmployeeName))
+                            {
+                                <div class="employee-node" style="
+                                    border: 1px solid #e5e7eb;
+                                    border-radius: 8px;
+                                    padding: 16px;
+                                    background-color: white;
+                                    transition: all 0.2s ease;
+                                " data-name="@employee.EmployeeName.ToLower()" 
+                                   data-department="@(employee.DepartmentName?.ToLower() ?? "")" 
+                                   data-manager="@(employee.ManagerName?.ToLower() ?? "")">
+                                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                                        <div style="flex: 1;">
+                                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                                <span style="font-weight: 600; color: #1f2937; font-size: 1.1rem;">@employee.EmployeeName</span>
+                                                @if (employee.TeamSize > 0)
+                                                {
+                                                    <span class="badge" style="background-color: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.75rem;">
+                                                        Team: @employee.TeamSize
+                                                    </span>
+                                                }
+                                            </div>
+                                            @if (!string.IsNullOrEmpty(employee.ManagerName))
+                                            {
+                                                <p style="margin: 0; color: #6b7280; font-size: 0.875rem;">
+                                                    👤 Manager: @employee.ManagerName
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p style="margin: 0; color: #f59e0b; font-size: 0.875rem;">
+                                                    ⚠️ No Manager Assigned
+                                                </p>
+                                            }
+                                        </div>
+                                        <a asp-action="ReassignEmployee" asp-route-id="@employee.EmployeeId" 
+                                           class="btn" style="padding: 8px 16px; font-size: 0.875rem; background-color: #3b82f6; color: white;">
+                                            Reassign
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div style="padding: 40px; text-align: center; color: #6b7280;">
+                <p>No organizational hierarchy data available.</p>
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const nodes = document.querySelectorAll('.employee-node');
+        
+        nodes.forEach(node => {
+            const name = node.getAttribute('data-name');
+            const dept = node.getAttribute('data-department');
+            const mgr = node.getAttribute('data-manager');
+            
+            if (name.includes(searchTerm) || dept.includes(searchTerm) || mgr.includes(searchTerm)) {
+                node.style.display = 'block';
+            } else {
+                node.style.display = 'none';
+            }
+        });
+    });
+</script>
+

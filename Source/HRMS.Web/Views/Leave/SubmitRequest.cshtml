@@ -1,0 +1,79 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Submit Leave Request";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Submit Leave Request</h2>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-error">@ViewBag.Error</div>
+    }
+
+    <form method="post" asp-action="SubmitRequest" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="leaveId">Leave Type *</label>
+            <select id="leaveId" name="leaveId" required>
+                <option value="">-- Select Leave Type --</option>
+                @if (ViewBag.LeaveTypes != null)
+                {
+                    @foreach (var leaveType in (List<Leave>)ViewBag.LeaveTypes)
+                    {
+                        <option value="@leaveType.LeaveId">@leaveType.LeaveType</option>
+                    }
+                }
+            </select>
+            @if (ViewBag.LeaveTypes != null)
+            {
+                @foreach (var leaveType in (List<Leave>)ViewBag.LeaveTypes)
+                {
+                    <small class="form-text text-muted">@leaveType.LeaveDescription</small>
+                }
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="startDate">Start Date *</label>
+            <input type="date" id="startDate" name="startDate" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">End Date *</label>
+            <input type="date" id="endDate" name="endDate" required class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="justification">Justification/Reason *</label>
+            <textarea id="justification" name="justification" rows="4" required class="form-control" placeholder="Please provide a reason for your leave request"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="attachment">Attachment (Optional)</label>
+            <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" class="form-control" />
+            <small class="form-text text-muted">Supported formats: PDF, DOC, DOCX, JPG, PNG (e.g., medical certificate for sick leave)</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Leave Request</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="MyLeaveHistory">View My Leave History</a> |
+        <a asp-action="MyLeaveBalance">View My Leave Balance</a> |
+        <a href="/Account/LoginSuccess">Back to Dashboard</a>
+    </div>
+</div>
+
+<script>
+    // Set minimum date to today
+    document.getElementById('startDate').min = new Date().toISOString().split('T')[0];
+    document.getElementById('endDate').min = new Date().toISOString().split('T')[0];
+
+    // Update end date minimum when start date changes
+    document.getElementById('startDate').addEventListener('change', function() {
+        document.getElementById('endDate').min = this.value;
+    });
+</script>
+

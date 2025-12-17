@@ -1,0 +1,94 @@
+@model List<LeaveRequest>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Pending Leave Requests";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Pending Leave Requests - My Team</h2>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>No pending leave requests from your team.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Employee</th>
+                    <th>Leave Type</th>
+                    <th>Duration (Days)</th>
+                    <th>Justification</th>
+                    <th>Attachments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.RequestId</td>
+                        <td>@request.EmployeeName</td>
+                        <td>@request.LeaveType</td>
+                        <td>@request.Duration</td>
+                        <td>@(request.Justification?.Length > 50 ? request.Justification.Substring(0, 50) + "..." : request.Justification)</td>
+                        <td>
+                            @if (request.Documents != null && request.Documents.Count > 0)
+                            {
+                                <span class="badge badge-info">@request.Documents.Count file(s)</span>
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="ViewRequest" asp-route-id="@request.RequestId" class="btn btn-sm btn-info">View</a>
+                            <form method="post" asp-action="ApproveRequest" style="display: inline;">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
+                                <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Approve this leave request?')">Approve</button>
+                            </form>
+                            <form method="post" asp-action="DenyRequest" style="display: inline;" onsubmit="return promptDenyReason(event);">
+                                <input type="hidden" name="requestId" value="@request.RequestId" />
+                                <input type="hidden" name="reason" id="denyReason_@request.RequestId" />
+                                <button type="submit" class="btn btn-sm btn-danger">Deny</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <div style="margin-top: 20px;">
+        <a href="/Account/LoginSuccess">Back to Dashboard</a>
+    </div>
+</div>
+
+<script>
+    function promptDenyReason(event) {
+        event.preventDefault();
+        const form = event.target;
+        const requestId = form.querySelector('input[name="requestId"]').value;
+        const reason = prompt('Please provide a reason for denying this leave request:');
+        if (reason && reason.trim()) {
+            document.getElementById('denyReason_' + requestId).value = reason.trim();
+            form.submit();
+        }
+        return false;
+    }
+</script>
+

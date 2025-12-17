@@ -1,0 +1,51 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Sync Offline Attendance";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Sync Offline Attendance Logs</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form method="post">
+        <div class="form-group">
+            <label for="employeeId">Employee ID</label>
+            <input type="number" id="employeeId" name="employeeId" placeholder="Enter employee ID" required />
+        </div>
+
+        <div class="form-group">
+            <label for="deviceId">Device ID</label>
+            <input type="number" id="deviceId" name="deviceId" placeholder="Enter device ID" required />
+        </div>
+
+        <div class="form-group">
+            <label for="clockTime">Clock Time</label>
+            <input type="datetime-local" id="clockTime" name="clockTime" required />
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type" name="type" required>
+                <option value="IN">Entry (IN)</option>
+                <option value="OUT">Exit (OUT)</option>
+            </select>
+        </div>
+
+        <button type="submit" style="width: 100%;">Sync Offline Attendance</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <p><small>Use this to sync attendance records that were recorded offline when the user reconnects. Call this twice - once for IN and once for OUT.</small></p>
+    </div>
+</div>
+

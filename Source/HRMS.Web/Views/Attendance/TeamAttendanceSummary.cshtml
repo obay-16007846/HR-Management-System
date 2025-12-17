@@ -1,0 +1,75 @@
+@model List<TeamAttendanceSummary>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Team Attendance Summary";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Team Attendance Summary</h2>
+    </div>
+
+    <form method="get" style="margin-bottom: 20px;">
+        <div style="display: flex; gap: 10px; align-items: end;">
+            <div class="form-group" style="flex: 1;">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate" value="@ViewBag.StartDate" />
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" name="endDate" value="@ViewBag.EndDate" />
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a asp-action="TeamAttendanceSummary" class="btn">Clear</a>
+            </div>
+        </div>
+    </form>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Date</th>
+                    <th>Entry Time</th>
+                    <th>Exit Time</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var summary in Model)
+                {
+                    <tr>
+                        <td>@summary.EmployeeName</td>
+                        <td>@summary.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@(summary.EntryTime?.ToString("HH:mm") ?? "N/A")</td>
+                        <td>@(summary.ExitTime?.ToString("HH:mm") ?? "N/A")</td>
+                        <td>@(summary.Duration.HasValue ? $"{summary.Duration / 60}h {summary.Duration % 60}m" : "N/A")</td>
+                        <td>
+                            @if (summary.Status == "Complete")
+                            {
+                                <span class="badge badge-success">@summary.Status</span>
+                            }
+                            else if (summary.Status == "Incomplete")
+                            {
+                                <span class="badge badge-warning">@summary.Status</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-error">@summary.Status</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No attendance records found for your team in the selected period.</p>
+    }
+</div>
+

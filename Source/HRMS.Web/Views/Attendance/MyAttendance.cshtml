@@ -1,0 +1,67 @@
+@model List<Attendance>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Attendance History";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">My Attendance History</h2>
+    </div>
+
+    <form method="get" style="margin-bottom: 20px;">
+        <div style="display: flex; gap: 10px; align-items: end;">
+            <div class="form-group" style="flex: 1;">
+                <label for="startDate">Start Date</label>
+                <input type="date" id="startDate" name="startDate" value="@ViewBag.StartDate" />
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label for="endDate">End Date</label>
+                <input type="date" id="endDate" name="endDate" value="@ViewBag.EndDate" />
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a asp-action="MyAttendance" class="btn">Clear</a>
+            </div>
+        </div>
+    </form>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Entry Time</th>
+                    <th>Exit Time</th>
+                    <th>Duration</th>
+                    <th>Shift</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var attendance in Model)
+                {
+                    <tr>
+                        <td>@(attendance.EntryTime?.ToString("yyyy-MM-dd") ?? "N/A")</td>
+                        <td>@(attendance.EntryTime?.ToString("HH:mm") ?? "N/A")</td>
+                        <td>@(attendance.ExitTime?.ToString("HH:mm") ?? "Not recorded")</td>
+                        <td>@(attendance.Duration.HasValue ? $"{attendance.Duration / 60}h {attendance.Duration % 60}m" : "N/A")</td>
+                        <td>@(attendance.ShiftName ?? "No shift")</td>
+                        <td>@(attendance.ExitTime.HasValue ? "Complete" : "Incomplete")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No attendance records found for the selected period.</p>
+    }
+
+    <div style="margin-top: 20px;">
+        <a asp-action="RecordAttendance">Record Today's Attendance</a> |
+        <a asp-action="SubmitCorrectionRequest">Submit Correction Request</a>
+    </div>
+</div>
+

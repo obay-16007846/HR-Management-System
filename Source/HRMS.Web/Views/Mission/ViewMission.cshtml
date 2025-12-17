@@ -1,0 +1,123 @@
+@model Mission
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Mission Details</h2>
+    </div>
+
+    <div style="padding: 24px;">
+        <div style="margin-bottom: 24px;">
+            <h3 style="margin-bottom: 16px; color: #1f2937;">@Model.Destination</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px;">
+                <div>
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>Start Date:</strong></p>
+                    <p style="margin: 0; font-size: 1rem;">@Model.StartDate.ToString("yyyy-MM-dd")</p>
+                </div>
+                <div>
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>End Date:</strong></p>
+                    <p style="margin: 0; font-size: 1rem;">@Model.EndDate.ToString("yyyy-MM-dd")</p>
+                </div>
+                <div>
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>Duration:</strong></p>
+                    <p style="margin: 0; font-size: 1rem;">@((Model.EndDate - Model.StartDate).Days + 1) days</p>
+                </div>
+                <div>
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>Status:</strong></p>
+                    <span class="badge" style="
+                        background-color: @(Model.Status == "Approved" || Model.Status == "Assigned" ? "#10b981" : 
+                                           Model.Status == "Rejected" ? "#ef4444" : 
+                                           Model.Status == "Completed" ? "#3b82f6" : "#f59e0b");
+                        color: white;
+                        padding: 6px 12px;
+                        border-radius: 12px;
+                        font-size: 0.875rem;
+                    ">
+                        @Model.Status
+                    </span>
+                </div>
+                <div>
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>Employee:</strong></p>
+                    <p style="margin: 0; font-size: 1rem;">@(Model.EmployeeName ?? "N/A")</p>
+                </div>
+                <div>
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>Manager:</strong></p>
+                    <p style="margin: 0; font-size: 1rem;">@(Model.ManagerName ?? "N/A")</p>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.Description))
+            {
+                <div style="margin-top: 24px;">
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>Description:</strong></p>
+                    <p style="margin: 0; font-size: 1rem; color: #1f2937;">@Model.Description</p>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Purpose))
+            {
+                <div style="margin-top: 24px;">
+                    <p style="margin: 0 0 8px 0; color: #6b7280; font-size: 0.875rem;"><strong>Purpose:</strong></p>
+                    <p style="margin: 0; font-size: 1rem; color: #1f2937;">@Model.Purpose</p>
+                </div>
+            }
+        </div>
+
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+            @if (User.IsInRole("Manager") && (Model.Status == "Pending" || Model.Status == "Requested"))
+            {
+                <div style="display: flex; gap: 12px;">
+                    <form asp-action="ApproveRequest" method="post" style="display: inline;">
+                        <input type="hidden" name="missionId" value="@Model.MissionId" />
+                        <button type="submit" class="btn" style="background-color: #10b981; color: white;">
+                            Approve
+                        </button>
+                    </form>
+                    <form asp-action="RejectRequest" method="post" style="display: inline;" onsubmit="return confirmReject()">
+                        <input type="hidden" name="missionId" value="@Model.MissionId" />
+                        <input type="text" name="reason" placeholder="Rejection reason" required style="padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; margin-right: 8px;" />
+                        <button type="submit" class="btn" style="background-color: #ef4444; color: white;">
+                            Reject
+                        </button>
+                    </form>
+                </div>
+            }
+            
+            <div style="margin-top: 16px;">
+                @if (User.IsInRole("Employee") || User.IsInRole("Manager"))
+                {
+                    <a asp-action="MyMissions" class="btn" style="background-color: #6b7280; color: white;">
+                        Back to My Missions
+                    </a>
+                }
+                @if (User.IsInRole("Manager"))
+                {
+                    <a asp-action="PendingRequests" class="btn" style="background-color: #6b7280; color: white; margin-left: 8px;">
+                        Pending Requests
+                    </a>
+                }
+                @if (User.IsInRole("HR Admin"))
+                {
+                    <a asp-action="AllMissions" class="btn" style="background-color: #6b7280; color: white;">
+                        Back to All Missions
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmReject() {
+        const reason = document.querySelector('input[name="reason"]').value;
+        if (!reason || reason.trim() === '') {
+            alert('Please provide a rejection reason');
+            return false;
+        }
+        return confirm('Are you sure you want to reject this mission request?');
+    }
+</script>
+

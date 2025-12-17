@@ -1,0 +1,514 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS - Human Resources Management System</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        /* Force consistent navbar styling for all roles */
+        .navbar .profile-picture-container,
+        .navbar .profile-picture-btn,
+        .navbar .profile-picture-placeholder,
+        .navbar #profilePicture {
+            width: 45px !important;
+            height: 45px !important;
+            max-width: 45px !important;
+            max-height: 45px !important;
+            min-width: 45px !important;
+            min-height: 45px !important;
+        }
+        
+        .navbar .profile-picture-container img,
+        .navbar .profile-picture-placeholder img,
+        .navbar #profilePicture img,
+        .navbar .profile-picture-btn img {
+            width: 45px !important;
+            height: 45px !important;
+            max-width: 45px !important;
+            max-height: 45px !important;
+            min-width: 45px !important;
+            min-height: 45px !important;
+            object-fit: cover !important;
+        }
+    </style>
+</head>
+<body>
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        var employeeId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="profile-picture-container">
+                    <button class="profile-picture-btn" id="profileMenuToggle" onclick="toggleProfileMenu(event)">
+                        <div class="profile-picture-placeholder" id="profilePicture" data-employee-id="@employeeId" data-initial="@(User.Identity.Name?.Substring(0, 1).ToUpper() ?? "U")">
+                            @(User.Identity.Name?.Substring(0, 1).ToUpper() ?? "U")
+                        </div>
+                    </button>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <a asp-controller="Employee" asp-action="MyProfile" class="profile-dropdown-item">
+                            <span class="nav-icon">👤</span> Manage My Profile
+                        </a>
+                        <a asp-controller="Attendance" asp-action="MyAttendance" class="profile-dropdown-item">
+                            <span class="nav-icon">📋</span> My Attendance
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-brand nav-brand-center">
+                    <a asp-controller="Account" asp-action="LoginSuccess">HRMS</a>
+                </div>
+                <div class="nav-menu">
+                    <a asp-controller="Account" asp-action="LoginSuccess" class="nav-link nav-link-dashboard">
+                        <span class="nav-icon">📊</span> Dashboard
+                    </a>
+                    <a asp-controller="Employee" asp-action="Notifications" class="nav-link" id="notificationLink" style="position: relative;">
+                        <span class="nav-icon">🔔</span> Notifications
+                        <span id="notificationBadge" class="notification-badge" style="display: none;"></span>
+                    </a>
+
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-toggle-icon">🌙</span>
+                        <span class="theme-toggle-text">Dark</span>
+                    </button>
+
+                    <a asp-controller="Account" asp-action="Logout" class="nav-link nav-link-logout">
+                        <span class="nav-icon">🚪</span> Logout
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <script>
+            // Load profile image if available
+            (function() {
+                const profilePic = document.getElementById('profilePicture');
+                if (profilePic) {
+                    const initial = profilePic.getAttribute('data-initial') || profilePic.textContent.trim() || 'U';
+                    // Ensure initial is displayed first
+                    profilePic.textContent = initial;
+                    profilePic.style.backgroundImage = 'none';
+                    
+                    // Fetch profile image from server
+                    fetch('/Employee/GetProfileImage?t=' + new Date().getTime())
+                        .then(response => {
+                            if (!response.ok) throw new Error('Network response was not ok');
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data && data.profileImage && data.profileImage.trim() !== '' && data.profileImage !== 'null') {
+                                const img = new Image();
+                                const imageUrl = '/uploads/' + data.profileImage + '?t=' + new Date().getTime();
+                                
+                                img.onload = function() {
+                                    // Only replace if image loads successfully
+                                    profilePic.innerHTML = '';
+                                    profilePic.style.backgroundImage = 'none';
+                                    const imgElement = document.createElement('img');
+                                    imgElement.src = imageUrl;
+                                    imgElement.alt = 'Profile';
+                                    imgElement.className = 'profile-picture-img';
+                                    // Set inline styles to force size
+                                    imgElement.style.width = '45px';
+                                    imgElement.style.height = '45px';
+                                    imgElement.style.maxWidth = '45px';
+                                    imgElement.style.maxHeight = '45px';
+                                    imgElement.style.minWidth = '45px';
+                                    imgElement.style.minHeight = '45px';
+                                    imgElement.style.objectFit = 'cover';
+                                    imgElement.style.borderRadius = '50%';
+                                    imgElement.style.display = 'block';
+                                    imgElement.style.position = 'absolute';
+                                    imgElement.style.top = '0';
+                                    imgElement.style.left = '0';
+                                    imgElement.style.margin = '0';
+                                    imgElement.style.padding = '0';
+                                    imgElement.onerror = function() {
+                                        // Fallback to initial on error
+                                        profilePic.innerHTML = initial;
+                                        profilePic.style.backgroundImage = 'none';
+                                    };
+                                    profilePic.appendChild(imgElement);
+                                };
+                                
+                                img.onerror = function() {
+                                    // Keep the initial if image fails to load
+                                    profilePic.innerHTML = initial;
+                                    profilePic.style.backgroundImage = 'none';
+                                };
+                                
+                                // Test load the image
+                                img.src = imageUrl;
+                            } else {
+                                // No profile image, keep initial
+                                profilePic.innerHTML = initial;
+                                profilePic.style.backgroundImage = 'none';
+                            }
+                        })
+                        .catch(() => {
+                            // Keep the initial on error
+                            profilePic.innerHTML = initial;
+                            profilePic.style.backgroundImage = 'none';
+                        });
+                }
+            })();
+        </script>
+    }
+    else
+    {
+        <nav class="navbar" style="justify-content: center;">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a asp-controller="Account" asp-action="Login" style="pointer-events: none;">HRMS</a>
+                </div>
+                <div class="nav-menu" style="margin-left: auto;">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <span class="theme-toggle-icon">🌙</span>
+                        <span class="theme-toggle-text">Dark</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    }
+
+    <main class="main-content">
+        <div class="container">
+            @RenderBody()
+        </div>
+        
+        @if (User.Identity != null && User.Identity.IsAuthenticated && 
+             ViewContext.RouteData.Values["controller"]?.ToString() == "Account" && 
+             ViewContext.RouteData.Values["action"]?.ToString() == "LoginSuccess")
+        {
+            <div class="bottom-navigation">
+                <div class="bottom-nav-container">
+                    <!-- Attendance Group -->
+                    <div class="nav-group">
+                        <h3 class="nav-group-title">Attendance</h3>
+                        <div class="nav-group-buttons">
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("RecordAttendance", "Attendance")'">
+                                <span class="nav-icon">✅</span> Record Attendance
+                            </button>
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("MyAttendance", "Attendance")'">
+                                <span class="nav-icon">📋</span> My Attendance
+                            </button>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("TeamAttendanceSummary", "Attendance")'">
+                                    <span class="nav-icon">📊</span> Team Attendance
+                                </button>
+                            }
+                            @if (User.IsInRole("System Admin"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("SyncLeaveToAttendance", "Attendance")'">
+                                    <span class="nav-icon">🔄</span> Sync Leave
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("SyncOfflineAttendance", "Attendance")'">
+                                    <span class="nav-icon">📱</span> Sync Offline
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Shift Management Group -->
+                    <div class="nav-group">
+                        <h3 class="nav-group-title">Shift Management</h3>
+                        <div class="nav-group-buttons">
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("MyShifts", "Shift")'">
+                                <span class="nav-icon">⏰</span> My Shifts
+                            </button>
+                            @if (User.IsInRole("System Admin"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("ListShiftTypes", "Shift")'">
+                                    <span class="nav-icon">⏰</span> Shift Management
+                                </button>
+                            }
+                            @if (User.IsInRole("System Admin") || User.IsInRole("Line Manager"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("AssignShiftToEmployee", "Shift")'">
+                                    <span class="nav-icon">➕</span> Assign Shift
+                                </button>
+                            }
+                            @if (User.IsInRole("HR Admin"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("ConfigureSplitShift", "Shift")'">
+                                    <span class="nav-icon">🔄</span> Configure Split Shift
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Mission Management Group -->
+                    <div class="nav-group">
+                        <h3 class="nav-group-title">Mission Management</h3>
+                        <div class="nav-group-buttons">
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("MyMissions", "Mission")'">
+                                <span class="nav-icon">✈️</span> My Missions
+                            </button>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("PendingRequests", "Mission")'">
+                                    <span class="nav-icon">⏳</span> Pending Requests
+                                </button>
+                            }
+                            @if (User.IsInRole("HR Admin"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("AssignMission", "Mission")'">
+                                    <span class="nav-icon">➕</span> Assign Mission
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("AllMissions", "Mission")'">
+                                    <span class="nav-icon">📋</span> All Missions
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Leave Management Group -->
+                    <div class="nav-group">
+                        <h3 class="nav-group-title">Leave Management</h3>
+                        <div class="nav-group-buttons">
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("SubmitRequest", "Leave")'">
+                                <span class="nav-icon">🏖️</span> Submit Leave Request
+                            </button>
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("MyLeaveHistory", "Leave")'">
+                                <span class="nav-icon">📜</span> My Leave History
+                            </button>
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("MyLeaveBalance", "Leave")'">
+                                <span class="nav-icon">⚖️</span> My Leave Balance
+                            </button>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("PendingRequests", "Leave")'">
+                                    <span class="nav-icon">⏳</span> Pending Leave Requests
+                                </button>
+                            }
+                            @if (User.IsInRole("HR Admin"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("ManageLeaveTypes", "Leave")'">
+                                    <span class="nav-icon">⚙️</span> Manage Leave Types
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("AllLeaveRequests", "Leave")'">
+                                    <span class="nav-icon">📋</span> All Leave Requests
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Employee Management Group -->
+                    <div class="nav-group">
+                        <h3 class="nav-group-title">Employee Management</h3>
+                        <div class="nav-group-buttons">
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("MyContract", "Employee")'">
+                                <span class="nav-icon">📄</span> My Contract
+                            </button>
+                            @if (User.IsInRole("Manager"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='/Employee/MyTeam'">
+                                    <span class="nav-icon">👨‍👩‍👧‍👦</span> My Team
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("SendTeamNotification", "Employee")'">
+                                    <span class="nav-icon">📢</span> Send Team Notification
+                                </button>
+                            }
+                            @if (User.IsInRole("HR Admin") || User.IsInRole("System Admin"))
+                            {
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("Index", "Employee")'">
+                                    <span class="nav-icon">👥</span> Employees
+                                </button>
+                            }
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("CreateEmployee", "Admin")'">
+                                <span class="nav-icon">➕</span> Create Employee
+                            </button>
+                            <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("EditEmployee", "HR")'">
+                                <span class="nav-icon">✏️</span> Edit Employee
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- HR Admin Group -->
+                    @if (User.IsInRole("HR Admin"))
+                    {
+                        <div class="nav-group">
+                            <h3 class="nav-group-title">HR Administration</h3>
+                            <div class="nav-group-buttons">
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='/HR/IncompleteProfiles'">
+                                    <span class="nav-icon">⚠️</span> Incomplete Profiles
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='/HR/CreateContract'">
+                                    <span class="nav-icon">➕</span> Create Contract
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='/HR/ExpiringContracts'">
+                                    <span class="nav-icon">⏰</span> Expiring Contracts
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-group">
+                            <h3 class="nav-group-title">Analytics & Reporting</h3>
+                            <div class="nav-group-buttons">
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("DepartmentStatistics", "Analytics")'">
+                                    <span class="nav-icon">📊</span> Department Statistics
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("ComplianceReport", "Analytics")'">
+                                    <span class="nav-icon">✅</span> Compliance Report
+                                </button>
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("DiversityReport", "Analytics")'">
+                                    <span class="nav-icon">✴️</span> Diversity Report
+                                </button>
+                            </div>
+                        </div>
+                    }
+                    
+                    <!-- System Admin Group -->
+                    @if (User.IsInRole("System Admin"))
+                    {
+                        <div class="nav-group">
+                            <h3 class="nav-group-title">Organizational Hierarchy</h3>
+                            <div class="nav-group-buttons">
+                                <button type="button" class="bottom-nav-button" onclick="window.location.href='@Url.Action("ViewHierarchy", "Hierarchy")'">
+                                    <span class="nav-icon">🏢</span> View Hierarchy
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year HRMS - Human Resources Management System</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Toggle
+        (function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                const themeIcon = themeToggle.querySelector('.theme-toggle-icon');
+                const themeText = themeToggle.querySelector('.theme-toggle-text');
+                const html = document.documentElement;
+
+                // Check for saved theme preference or default to light mode
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                
+                // Apply the saved theme
+                if (currentTheme === 'dark') {
+                    html.setAttribute('data-theme', 'dark');
+                    if (themeIcon) themeIcon.textContent = '☀️';
+                    if (themeText) themeText.textContent = 'Light';
+                } else {
+                    html.removeAttribute('data-theme');
+                    if (themeIcon) themeIcon.textContent = '🌙';
+                    if (themeText) themeText.textContent = 'Dark';
+                }
+
+                // Toggle theme on button click
+                themeToggle.addEventListener('click', function() {
+                    const isDark = html.getAttribute('data-theme') === 'dark';
+                    
+                    if (isDark) {
+                        html.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'light');
+                        if (themeIcon) themeIcon.textContent = '🌙';
+                        if (themeText) themeText.textContent = 'Dark';
+                    } else {
+                        html.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                        if (themeIcon) themeIcon.textContent = '☀️';
+                        if (themeText) themeText.textContent = 'Light';
+                    }
+                });
+            }
+        })();
+
+        // Profile Dropdown Toggle
+        function toggleProfileMenu(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            const dropdown = document.getElementById('profileDropdown');
+            const toggle = document.getElementById('profileMenuToggle');
+            if (dropdown && toggle) {
+                const isShowing = dropdown.classList.contains('show');
+                // Close all dropdowns first
+                document.querySelectorAll('.profile-dropdown').forEach(d => d.classList.remove('show'));
+                // Toggle this one
+                if (!isShowing) {
+                    dropdown.classList.add('show');
+                }
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('profileDropdown');
+            const toggle = document.getElementById('profileMenuToggle');
+            if (dropdown && toggle) {
+                if (!toggle.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        });
+
+        // Ensure dropdown is hidden on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.getElementById('profileDropdown');
+            if (dropdown) {
+                dropdown.classList.remove('show');
+            }
+            
+            // Load unread notification count
+            loadUnreadNotificationCount();
+        });
+
+        // Load unread notification count
+        async function loadUnreadNotificationCount() {
+            try {
+                // Only load if user is authenticated (notification link exists)
+                const notificationLink = document.getElementById('notificationLink');
+                if (!notificationLink) {
+                    return; // User not authenticated, skip
+                }
+                
+                const response = await fetch('/Employee/GetUnreadNotificationCount');
+                if (response.ok) {
+                    const data = await response.json();
+                    updateNotificationBadge(data.count);
+                } else if (response.status === 401) {
+                    // User not authenticated, ignore
+                    return;
+                }
+            } catch (error) {
+                // Silently fail - notification count is not critical
+                console.debug('Could not load notification count:', error);
+            }
+        }
+
+        // Update notification badge
+        function updateNotificationBadge(count) {
+            const badge = document.getElementById('notificationBadge');
+            if (count > 0) {
+                if (!badge) {
+                    const notificationLink = document.getElementById('notificationLink');
+                    if (notificationLink) {
+                        const badgeElement = document.createElement('span');
+                        badgeElement.id = 'notificationBadge';
+                        badgeElement.className = 'notification-badge';
+                        badgeElement.textContent = count > 99 ? '99+' : count;
+                        notificationLink.appendChild(badgeElement);
+                    }
+                } else {
+                    badge.textContent = count > 99 ? '99+' : count;
+                    badge.style.display = 'inline-block';
+                }
+            } else {
+                if (badge) {
+                    badge.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

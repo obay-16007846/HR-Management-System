@@ -1,0 +1,78 @@
+@model List<LeaveRequest>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Leave History";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">My Leave History</h2>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <div style="margin-bottom: 20px;">
+        <a asp-action="SubmitRequest" class="btn btn-primary">Submit New Leave Request</a>
+        <a asp-action="MyLeaveBalance" class="btn btn-secondary">View Leave Balance</a>
+    </div>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>No leave requests found.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Leave Type</th>
+                    <th>Duration (Days)</th>
+                    <th>Status</th>
+                    <th>Justification</th>
+                    <th>Attachments</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.RequestId</td>
+                        <td>@request.LeaveType</td>
+                        <td>@request.Duration</td>
+                        <td>
+                            <span class="badge @(request.Status == "Approved" ? "badge-success" : 
+                                                 request.Status == "Rejected" ? "badge-danger" : 
+                                                 request.Status == "Finalized" ? "badge-info" : "badge-warning")">
+                                @request.Status
+                            </span>
+                        </td>
+                        <td>@(request.Justification?.Length > 50 ? request.Justification.Substring(0, 50) + "..." : request.Justification)</td>
+                        <td>
+                            @if (request.Documents != null && request.Documents.Count > 0)
+                            {
+                                <span class="badge badge-info">@request.Documents.Count file(s)</span>
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
+                        <td>
+                            <a asp-action="ViewRequest" asp-route-id="@request.RequestId" class="btn btn-sm btn-info">View Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <div style="margin-top: 20px;">
+        <a href="/Account/LoginSuccess">Back to Dashboard</a>
+    </div>
+</div>
+

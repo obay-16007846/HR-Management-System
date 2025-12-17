@@ -1,0 +1,118 @@
+@using HRMS.Web.Models
+@{
+    Layout = "_Layout";
+    var employees = ViewBag.Employees as List<Employee> ?? new List<Employee>();
+    var managers = ViewBag.Managers as List<Employee> ?? new List<Employee>();
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Assign Mission</h2>
+    </div>
+
+    <div style="padding: 24px;">
+        @if (ViewBag.Error != null)
+        {
+            <div style="background-color: #fee2e2; color: #991b1b; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-action="AssignMission" method="post">
+            <div style="display: grid; gap: 20px;">
+                <div>
+                    <label for="employeeId" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Employee <span style="color: #ef4444;">*</span>
+                    </label>
+                    <select name="employeeId" id="employeeId" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;">
+                        <option value="">Select Employee</option>
+                        @foreach (var emp in employees)
+                        {
+                            <option value="@emp.EmployeeId">@emp.FullName (@emp.Email)</option>
+                        }
+                    </select>
+                </div>
+
+                <div>
+                    <label for="managerId" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Manager <span style="color: #ef4444;">*</span>
+                    </label>
+                    <select name="managerId" id="managerId" required style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;">
+                        <option value="">Select Manager</option>
+                        @foreach (var mgr in managers)
+                        {
+                            <option value="@mgr.EmployeeId">@mgr.FullName (@mgr.Email)</option>
+                        }
+                    </select>
+                </div>
+
+                <div>
+                    <label for="destination" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Destination <span style="color: #ef4444;">*</span>
+                    </label>
+                    <input type="text" name="destination" id="destination" required 
+                           style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;"
+                           placeholder="Enter mission destination" />
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <label for="startDate" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                            Start Date <span style="color: #ef4444;">*</span>
+                        </label>
+                        <input type="date" name="startDate" id="startDate" required 
+                               style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;"
+                               min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div>
+                        <label for="endDate" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                            End Date <span style="color: #ef4444;">*</span>
+                        </label>
+                        <input type="date" name="endDate" id="endDate" required 
+                               style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;"
+                               min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="description" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Description
+                    </label>
+                    <textarea name="description" id="description" rows="4" 
+                              style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;"
+                              placeholder="Enter mission description (optional)"></textarea>
+                </div>
+
+                <div>
+                    <label for="purpose" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Purpose
+                    </label>
+                    <textarea name="purpose" id="purpose" rows="3" 
+                              style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;"
+                              placeholder="Enter mission purpose (optional)"></textarea>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <button type="submit" class="btn" style="background-color: #3b82f6; color: white; padding: 12px 24px;">
+                        Assign Mission
+                    </button>
+                    <a asp-action="AllMissions" class="btn" style="background-color: #6b7280; color: white; padding: 12px 24px;">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Validate end date is after start date
+    document.getElementById('startDate').addEventListener('change', function() {
+        const startDate = this.value;
+        const endDateInput = document.getElementById('endDate');
+        if (startDate) {
+            endDateInput.min = startDate;
+        }
+    });
+</script>
+

@@ -1,0 +1,69 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Shift Type";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Create Shift Type</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+
+    <form method="post">
+        <div class="form-group">
+            <label for="name">Shift Name</label>
+            <input type="text" id="name" name="name" placeholder="e.g., Morning Shift, Night Shift" required />
+        </div>
+
+        <div class="form-group">
+            <label for="type">Shift Type</label>
+            <select id="type" name="type" required>
+                <option value="">Select shift type</option>
+                <option value="Normal">Normal</option>
+                <option value="Rotational">Rotational</option>
+                <option value="Split">Split</option>
+                <option value="Custom">Custom</option>
+                <option value="Special">Special</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <input type="time" id="startTime" name="startTime" required />
+        </div>
+
+        <div class="form-group">
+            <label for="endTime">End Time</label>
+            <input type="time" id="endTime" name="endTime" required />
+        </div>
+
+        <div class="form-group">
+            <label for="breakDuration">Break Duration (minutes)</label>
+            <input type="number" id="breakDuration" name="breakDuration" min="0" value="0" required />
+        </div>
+
+        <div class="form-group">
+            <label for="shiftDate">Shift Date (Optional)</label>
+            <input type="date" id="shiftDate" name="shiftDate" />
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+
+        <button type="submit" style="width: 100%;">Create Shift Type</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="ListShiftTypes">View All Shift Types</a>
+    </div>
+</div>
+

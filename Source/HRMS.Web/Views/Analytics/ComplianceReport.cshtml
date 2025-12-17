@@ -1,0 +1,41 @@
+@model ComplianceReport
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Compliance Report</h2>
+    </div>
+
+    <div style="padding: 24px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 32px;">
+            <div style="background: #ffffff; border: 2px solid #f59e0b; padding: 24px; border-radius: 12px; color: #000000;">
+                <h3 style="margin: 0 0 8px 0; font-size: 2rem; color: #000000;">@Model.IncompleteProfiles</h3>
+                <p style="margin: 0; color: #000000;">Incomplete Profiles</p>
+            </div>
+            <div style="background: #ffffff; border: 2px solid #ef4444; padding: 24px; border-radius: 12px; color: #000000;">
+                <h3 style="margin: 0 0 8px 0; font-size: 2rem; color: #000000;">@Model.ExpiredContracts</h3>
+                <p style="margin: 0; color: #000000;">Expired Contracts</p>
+            </div>
+            <div style="background: #ffffff; border: 2px solid #3b82f6; padding: 24px; border-radius: 12px; color: #000000;">
+                <h3 style="margin: 0 0 8px 0; font-size: 2rem; color: #000000;">@Model.EmployeesWithoutManagers</h3>
+                <p style="margin: 0; color: #000000;">Employees Without Managers</p>
+            </div>
+            <div style="background: #ffffff; border: 2px solid #8b5cf6; padding: 24px; border-radius: 12px; color: #000000;">
+                <h3 style="margin: 0 0 8px 0; font-size: 2rem; color: #000000;">@Model.EmployeesWithoutDepartments</h3>
+                <p style="margin: 0; color: #000000;">Employees Without Departments</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 32px;">
+            <a asp-action="DiversityReport" class="btn" style="background-color: #3b82f6; color: white; margin-right: 12px;">
+                View Diversity Report
+            </a>
+            <a asp-action="DepartmentStatistics" class="btn" style="background-color: #6b7280; color: white;">
+                View Department Statistics
+            </a>
+        </div>
+    </div>
+</div>
+

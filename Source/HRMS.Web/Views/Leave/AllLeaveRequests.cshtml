@@ -1,0 +1,75 @@
+@model List<LeaveRequest>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "All Leave Requests";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">All Leave Requests</h2>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <div style="margin-bottom: 20px;">
+        <a asp-action="AllLeaveRequests" asp-route-status="" class="btn @(ViewBag.Status == null ? "btn-primary" : "btn-secondary")">All</a>
+        <a asp-action="AllLeaveRequests" asp-route-status="Pending" class="btn @(ViewBag.Status == "Pending" ? "btn-primary" : "btn-secondary")">Pending</a>
+        <a asp-action="AllLeaveRequests" asp-route-status="Approved" class="btn @(ViewBag.Status == "Approved" ? "btn-primary" : "btn-secondary")">Approved</a>
+        <a asp-action="AllLeaveRequests" asp-route-status="Rejected" class="btn @(ViewBag.Status == "Rejected" ? "btn-primary" : "btn-secondary")">Rejected</a>
+    </div>
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <p>No leave requests found.</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Employee</th>
+                    <th>Leave Type</th>
+                    <th>Duration (Days)</th>
+                    <th>Status</th>
+                    <th>Justification</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.RequestId</td>
+                        <td>@request.EmployeeName</td>
+                        <td>@request.LeaveType</td>
+                        <td>@request.Duration</td>
+                        <td>
+                            <span class="badge @(request.Status == "Approved" ? "badge-success" : 
+                                                 request.Status == "Rejected" ? "badge-danger" : 
+                                                 request.Status == "Finalized" ? "badge-info" : "badge-warning")">
+                                @request.Status
+                            </span>
+                        </td>
+                        <td>@(request.Justification?.Length > 50 ? request.Justification.Substring(0, 50) + "..." : request.Justification)</td>
+                        <td>
+                            <a asp-action="ViewRequest" asp-route-id="@request.RequestId" class="btn btn-sm btn-info">View</a>
+                            @if (request.Status != "Finalized")
+                            {
+                                <a asp-action="OverrideLeaveDecision" asp-route-id="@request.RequestId" class="btn btn-sm btn-warning">Override</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <div style="margin-top: 20px;">
+        <a href="/Account/LoginSuccess">Back to Dashboard</a>
+    </div>
+</div>
+

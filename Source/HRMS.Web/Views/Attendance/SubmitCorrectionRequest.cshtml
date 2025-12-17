@@ -1,0 +1,50 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Submit Attendance Correction Request";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Submit Attendance Correction Request</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form method="post">
+        <div class="form-group">
+            <label for="date">Date to Correct</label>
+            <input type="date" id="date" name="date" required />
+        </div>
+
+        <div class="form-group">
+            <label for="correctionType">Correction Type</label>
+            <select id="correctionType" name="correctionType" required>
+                <option value="">Select correction type</option>
+                <option value="Missing Entry">Missing Entry Time</option>
+                <option value="Missing Exit">Missing Exit Time</option>
+                <option value="Wrong Entry">Wrong Entry Time</option>
+                <option value="Wrong Exit">Wrong Exit Time</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="reason">Reason</label>
+            <textarea id="reason" name="reason" rows="4" placeholder="Please explain why this correction is needed..." required></textarea>
+        </div>
+
+        <button type="submit" style="width: 100%;">Submit Correction Request</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="MyCorrectionRequests">View My Correction Requests</a>
+    </div>
+</div>
+

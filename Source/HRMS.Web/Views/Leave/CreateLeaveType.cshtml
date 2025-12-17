@@ -1,0 +1,34 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Leave Type";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Create New Leave Type</h2>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-error">@ViewBag.Error</div>
+    }
+
+    <form method="post" asp-action="CreateLeaveType">
+        <div class="form-group">
+            <label for="leaveType">Leave Type Name *</label>
+            <input type="text" id="leaveType" name="leaveType" required class="form-control" placeholder="e.g., Maternity Leave, Paternity Leave" />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" class="form-control" placeholder="Describe this leave type and its purpose"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Create Leave Type</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="ManageLeaveTypes">Back to Manage Leave Types</a>
+    </div>
+</div>
+

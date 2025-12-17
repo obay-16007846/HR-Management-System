@@ -1,0 +1,52 @@
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Send Team Notification</h2>
+    </div>
+
+    <div style="padding: 24px;">
+        @if (ViewBag.Error != null)
+        {
+            <div style="background-color: #fee2e2; color: #991b1b; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-action="SendTeamNotification" method="post">
+            <div style="display: grid; gap: 20px;">
+                <div>
+                    <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Message <span style="color: #ef4444;">*</span>
+                    </label>
+                    <textarea name="message" id="message" rows="5" required 
+                              style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;"
+                              placeholder="Enter notification message for your team"></textarea>
+                </div>
+
+                <div>
+                    <label for="urgency" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Urgency Level
+                    </label>
+                    <select name="urgency" id="urgency" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;">
+                        <option value="Normal">Normal</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <button type="submit" class="btn" style="background-color: #3b82f6; color: white; padding: 12px 24px;">
+                        Send Notification
+                    </button>
+                    <a asp-action="Notifications" class="btn" style="background-color: #6b7280; color: white; padding: 12px 24px;">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

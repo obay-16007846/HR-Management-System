@@ -1,0 +1,54 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Assign Shift to Employee";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Assign Shift to Employee</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form method="post">
+        <input type="hidden" name="employeeId" value="@ViewBag.EmployeeId" />
+
+        <div class="form-group">
+            <label for="shiftId">Select Shift</label>
+            <select id="shiftId" name="shiftId" required>
+                <option value="">Select a shift</option>
+                @if (ViewBag.Shifts != null)
+                {
+                    @foreach (var shift in (List<Shift>)ViewBag.Shifts)
+                    {
+                        <option value="@shift.ShiftId">@shift.Name (@shift.Type) - @(shift.StartTime?.ToString(@"hh\:mm")) to @(shift.EndTime?.ToString(@"hh\:mm"))</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate" required />
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate" required />
+        </div>
+
+        <button type="submit" style="width: 100%;">Assign Shift</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="AssignShiftToEmployee">Select Different Employee</a>
+    </div>
+</div>
+

@@ -1,0 +1,61 @@
+@using HRMS.Web.Models
+@{
+    Layout = "_Layout";
+    var employee = ViewBag.Employee as Employee;
+    var departments = ViewBag.Departments as List<Department> ?? new List<Department>();
+    var managers = ViewBag.Managers as List<Employee> ?? new List<Employee>();
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Reassign Employee: @(employee?.FullName ?? "Unknown")</h2>
+    </div>
+
+    <div style="padding: 24px;">
+        <form asp-action="ReassignEmployee" method="post">
+            <input type="hidden" name="employeeId" value="@employee?.EmployeeId" />
+            
+            <div style="display: grid; gap: 20px;">
+                <div>
+                    <label for="departmentId" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Department
+                    </label>
+                    <select name="departmentId" id="departmentId" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;">
+                        <option value="">-- Keep Current / Unassigned --</option>
+                        @foreach (var dept in departments)
+                        {
+                            <option value="@dept.DepartmentId" selected="@(employee?.DepartmentId == dept.DepartmentId)">
+                                @dept.DepartmentName
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <div>
+                    <label for="managerId" style="display: block; margin-bottom: 8px; font-weight: 600; color: #374151;">
+                        Manager
+                    </label>
+                    <select name="managerId" id="managerId" style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem;">
+                        <option value="">-- Keep Current / Unassigned --</option>
+                        @foreach (var mgr in managers.Where(m => m.EmployeeId != employee?.EmployeeId))
+                        {
+                            <option value="@mgr.EmployeeId" selected="@(employee?.ManagerId == mgr.EmployeeId)">
+                                @mgr.FullName (@mgr.Email)
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 24px;">
+                    <button type="submit" class="btn" style="background-color: #3b82f6; color: white; padding: 12px 24px;">
+                        Reassign Employee
+                    </button>
+                    <a asp-action="ViewHierarchy" class="btn" style="background-color: #6b7280; color: white; padding: 12px 24px;">
+                        Cancel
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

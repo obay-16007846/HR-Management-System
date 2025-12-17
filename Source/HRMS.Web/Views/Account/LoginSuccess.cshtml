@@ -1,0 +1,22 @@
+@using System.Security.Claims
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Dashboard</h2>
+    </div>
+
+    <div class="info-box" style="padding: 24px 24px 24px 24px; margin-top: 24px; margin-bottom: 24px; margin-left: 24px; margin-right: 24px;">
+        <p style="margin: 0; font-size: 1.1rem;">
+            <strong>Welcome, @User.Identity.Name!</strong>
+        </p>
+    </div>
+
+    <div style="margin-top: 24px; padding: 0 4px; margin-left:24px;">
+        <p><strong>Your Role:</strong> 
+            <span class="badge badge-info">@User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value</span>
+        </p>
+    </div>
+</div>

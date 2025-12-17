@@ -1,0 +1,69 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Custom Shift";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Create Custom Shift</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form method="post">
+        <input type="hidden" name="employeeId" value="@ViewBag.EmployeeId" />
+
+        <div class="form-group">
+            <label for="shiftName">Shift Name</label>
+            <input type="text" id="shiftName" name="shiftName" placeholder="e.g., Special Project Shift" required />
+        </div>
+
+        <div class="form-group">
+            <label for="shiftType">Shift Type</label>
+            <select id="shiftType" name="shiftType" required>
+                <option value="Custom">Custom</option>
+                <option value="Special">Special</option>
+                <option value="Mission">Mission</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <input type="time" id="startTime" name="startTime" required />
+        </div>
+
+        <div class="form-group">
+            <label for="endTime">End Time</label>
+            <input type="time" id="endTime" name="endTime" required />
+        </div>
+
+        <div class="form-group">
+            <label for="breakDuration">Break Duration (minutes)</label>
+            <input type="number" id="breakDuration" name="breakDuration" min="0" value="0" required />
+        </div>
+
+        <div class="form-group">
+            <label for="startDate">Assignment Start Date</label>
+            <input type="date" id="startDate" name="startDate" required />
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">Assignment End Date</label>
+            <input type="date" id="endDate" name="endDate" required />
+        </div>
+
+        <button type="submit" style="width: 100%;">Create and Assign Custom Shift</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="CreateCustomShift">Select Different Employee</a>
+    </div>
+</div>
+

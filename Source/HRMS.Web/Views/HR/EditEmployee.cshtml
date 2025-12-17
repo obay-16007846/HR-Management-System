@@ -1,0 +1,35 @@
+@{
+    Layout = "_Layout";
+}
+
+<h2>Edit Employee Profile</h2>
+
+@if (ViewBag.EmployeeID != null)
+{
+    <div style="margin-bottom: 20px; padding: 10px; background-color: #f5f5f5; border: 1px solid #ddd;">
+        <strong>Employee ID:</strong> @ViewBag.EmployeeID
+    </div>
+
+    <form method="post">
+        <input type="hidden" name="employeeId" value="@ViewBag.EmployeeID" />
+
+        <label>Email:</label><br />
+        <input name="email" value="@ViewBag.Email" required />
+        <br /><br />
+
+        <label>Phone:</label><br />
+        <input name="phone" value="@ViewBag.Phone" required />
+        <br /><br />
+
+        <label>Address:</label><br />
+        <input name="address" value="@ViewBag.Address" required />
+        <br /><br />
+
+        <button type="submit">Save Changes</button>
+    </form>
+}
+else
+{
+    <p>Please select an employee to edit.</p>
+    <a href="/HR/EditEmployee">Select Employee</a>
+}

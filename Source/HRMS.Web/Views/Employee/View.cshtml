@@ -1,0 +1,25 @@
+@model Employee
+
+<h2>Employee Profile</h2>
+
+@if (!string.IsNullOrEmpty(Model.ProfileImage))
+{
+    <img src="~/uploads/@Model.ProfileImage" width="150" />
+}
+
+<p><strong>Name:</strong> @Model.FullName</p>
+<p><strong>Email:</strong> @Model.Email</p>
+<p><strong>Phone:</strong> @Model.Phone</p>
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Bio:</strong> @Model.Biography</p>
+
+@if (User.IsInRole("HR Admin"))
+{
+    <a asp-action="EditEmployee" asp-route-id="@Model.EmployeeId">
+        Edit Profile (HR)
+    </a>
+    <br />
+}
+
+<a asp-controller="Account" asp-action="LoginSuccess">Back to Dashboard</a>
+

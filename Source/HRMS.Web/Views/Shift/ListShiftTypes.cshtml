@@ -1,0 +1,56 @@
+@model List<Shift>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Shift Types";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">All Shift Types</h2>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <div style="margin-bottom: 20px;">
+        <a asp-action="CreateShiftType" class="btn btn-primary">Create New Shift Type</a>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Break (min)</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var shift in Model)
+                {
+                    <tr>
+                        <td>@shift.ShiftId</td>
+                        <td>@shift.Name</td>
+                        <td>@shift.Type</td>
+                        <td>@(shift.StartTime?.ToString(@"hh\:mm") ?? "N/A")</td>
+                        <td>@(shift.EndTime?.ToString(@"hh\:mm") ?? "N/A")</td>
+                        <td>@(shift.BreakDuration ?? 0)</td>
+                        <td>@shift.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No shift types found. <a asp-action="CreateShiftType">Create one now</a></p>
+    }
+</div>
+

@@ -1,0 +1,41 @@
+@model List<ShiftAssignment>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Shifts";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">My Shift Assignments</h2>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Shift Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var assignment in Model)
+                {
+                    <tr>
+                        <td>@assignment.ShiftName</td>
+                        <td>@(assignment.StartDate?.ToString("yyyy-MM-dd") ?? "N/A")</td>
+                        <td>@(assignment.EndDate?.ToString("yyyy-MM-dd") ?? "N/A")</td>
+                        <td>@assignment.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>You have no shift assignments.</p>
+    }
+</div>
+

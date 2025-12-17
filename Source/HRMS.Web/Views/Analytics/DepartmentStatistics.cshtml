@@ -1,0 +1,48 @@
+@model List<DepartmentStats>
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Department Statistics</h2>
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <div style="padding: 24px;">
+            <table class="table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #f3f4f6; border-bottom: 2px solid #e5e7eb;">
+                        <th style="padding: 12px; text-align: left; color: #000000; font-weight: 600;">Department</th>
+                        <th style="padding: 12px; text-align: center; color:rgb(0, 0, 0); font-weight: 600;">Total Employees</th>
+                        <th style="padding: 12px; text-align: center; color: #000000; font-weight: 600;">Active</th>
+                        <th style="padding: 12px; text-align: center; color: #000000; font-weight: 600;">Inactive</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var stat in Model)
+                    {
+                        <tr style="border-bottom: 1px solid #e5e7eb;">
+                            <td style="padding: 12px; font-weight: 600; color: #000000;">@stat.DepartmentName</td>
+                            <td style="padding: 12px; text-align: center; color: #000000;">@stat.EmployeeCount</td>
+                            <td style="padding: 12px; text-align: center;">
+                                <span style="color: #10b981; font-weight: 600;">@stat.ActiveCount</span>
+                            </td>
+                            <td style="padding: 12px; text-align: center;">
+                                <span style="color: #ef4444; font-weight: 600;">@stat.InactiveCount</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div style="padding: 40px; text-align: center; color: #6b7280;">
+            <p>No department statistics available.</p>
+        </div>
+    }
+</div>
+

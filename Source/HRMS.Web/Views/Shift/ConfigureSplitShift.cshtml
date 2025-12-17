@@ -1,0 +1,57 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Configure Split Shift";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Configure Split Shift</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form method="post">
+        <div class="form-group">
+            <label for="shiftName">Shift Name</label>
+            <input type="text" id="shiftName" name="shiftName" placeholder="e.g., Split Morning-Evening" required />
+        </div>
+
+        <h3>First Period</h3>
+        <div class="form-group">
+            <label for="firstStart">First Start Time</label>
+            <input type="time" id="firstStart" name="firstStart" required />
+        </div>
+
+        <div class="form-group">
+            <label for="firstEnd">First End Time</label>
+            <input type="time" id="firstEnd" name="firstEnd" required />
+        </div>
+
+        <h3>Second Period</h3>
+        <div class="form-group">
+            <label for="secondStart">Second Start Time</label>
+            <input type="time" id="secondStart" name="secondStart" required />
+        </div>
+
+        <div class="form-group">
+            <label for="secondEnd">Second End Time</label>
+            <input type="time" id="secondEnd" name="secondEnd" required />
+        </div>
+
+        <div class="form-group">
+            <label for="breakDuration">Break Duration Between Periods (minutes)</label>
+            <input type="number" id="breakDuration" name="breakDuration" min="0" value="60" required />
+            <small>Note: Break duration is automatically calculated from the time difference between first end and second start</small>
+        </div>
+
+        <button type="submit" style="width: 100%;">Configure Split Shift</button>
+    </form>
+</div>
+

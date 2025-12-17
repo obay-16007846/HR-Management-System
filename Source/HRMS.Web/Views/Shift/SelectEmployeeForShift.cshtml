@@ -1,0 +1,43 @@
+@model List<Employee>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Select Employee for Shift Assignment";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Select Employee</h2>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>@emp.EmployeeId</td>
+                        <td>@emp.FullName</td>
+                        <td>@emp.Email</td>
+                        <td>
+                            <a asp-action="AssignShiftToEmployee" asp-route-employeeId="@emp.EmployeeId" class="btn btn-primary">Assign Shift</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No employees found.</p>
+    }
+</div>
+

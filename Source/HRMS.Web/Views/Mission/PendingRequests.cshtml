@@ -1,0 +1,62 @@
+@model List<Mission>
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Pending Mission Requests</h2>
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <div style="margin-top: 20px;">
+            <table class="table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="background-color: #f3f4f6; border-bottom: 2px solid #e5e7eb;">
+                        <th style="padding: 12px; text-align: left;">Employee</th>
+                        <th style="padding: 12px; text-align: left;">Destination</th>
+                        <th style="padding: 12px; text-align: left;">Start Date</th>
+                        <th style="padding: 12px; text-align: left;">End Date</th>
+                        <th style="padding: 12px; text-align: left;">Status</th>
+                        <th style="padding: 12px; text-align: left;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mission in Model)
+                    {
+                        <tr style="border-bottom: 1px solid #e5e7eb;">
+                            <td style="padding: 12px;">@(mission.EmployeeName ?? "N/A")</td>
+                            <td style="padding: 12px;">@mission.Destination</td>
+                            <td style="padding: 12px;">@mission.StartDate.ToString("yyyy-MM-dd")</td>
+                            <td style="padding: 12px;">@mission.EndDate.ToString("yyyy-MM-dd")</td>
+                            <td style="padding: 12px;">
+                                <span class="badge" style="
+                                    background-color: #f59e0b;
+                                    color: white;
+                                    padding: 4px 12px;
+                                    border-radius: 12px;
+                                    font-size: 0.875rem;
+                                ">
+                                    @mission.Status
+                                </span>
+                            </td>
+                            <td style="padding: 12px;">
+                                <a asp-action="ViewMission" asp-route-id="@mission.MissionId" class="btn" style="padding: 6px 12px; font-size: 0.875rem;">
+                                    Review
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div style="padding: 40px; text-align: center; color: #6b7280;">
+            <p>No pending mission requests.</p>
+        </div>
+    }
+</div>
+

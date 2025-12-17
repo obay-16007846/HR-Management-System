@@ -1,0 +1,76 @@
+@{
+    var currentRoles = ViewBag.CurrentRoles as List<int> ?? new List<int>();
+    var roleMap = new Dictionary<int, string>
+    {
+        { 1, "System Admin" },
+        { 2, "HR Admin" },
+        { 3, "Line Manager" },
+        { 4, "Employee" }
+    };
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Assign Role to Employee</h2>
+    </div>
+
+    <div class="info-box mb-4" style="padding: 24px 24px 24px 24px; margin-top: 24px; margin-bottom: 24px; margin-left: 24px; margin-right: 24px;">
+        <strong>Employee ID:</strong> @ViewBag.EmployeeId<br />
+        <strong>Employee Name:</strong> @ViewBag.EmployeeName
+    </div>
+
+    <div class="mb-4">
+        <h3>Current Roles</h3>
+        @if (currentRoles.Count > 0)
+        {
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+                @foreach (var roleId in currentRoles)
+                {
+                    <div class="card" style="padding: 16px; margin-bottom: 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span><strong>@roleMap[roleId]</strong></span>
+                            <form method="post" class="inline-form">
+                                <input type="hidden" name="employeeId" value="@ViewBag.EmployeeId" />
+                                <input type="hidden" name="roleId" value="@roleId" />
+                                <input type="hidden" name="action" value="Remove" />
+                                <button type="submit" class="btn btn-danger btn-small">Remove</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-center" style="color: var(--text-secondary); padding: 20px;">No roles assigned.</p>
+        }
+    </div>
+
+    <div>
+        <h3>Available Roles</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+            @foreach (var role in roleMap)
+            {
+                @if (!currentRoles.Contains(role.Key))
+                {
+                    <div class="card" style="padding: 16px; margin-bottom: 0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span><strong>@role.Value</strong></span>
+                            <form method="post" class="inline-form">
+                                <input type="hidden" name="employeeId" value="@ViewBag.EmployeeId" />
+                                <input type="hidden" name="roleId" value="@role.Key" />
+                                <input type="hidden" name="action" value="Add" />
+                                <button type="submit" class="btn btn-success btn-small">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="/Employee/Index" class="btn btn-secondary">← Back to Employee List</a>
+    </div>
+</div>
+

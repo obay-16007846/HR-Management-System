@@ -1,0 +1,29 @@
+@model Contract
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">My Contract</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <div>
+            <strong style="color: var(--text-secondary); display: block; margin-bottom: 8px;">Contract Type</strong>
+            <p style="font-size: 1.1rem; margin: 0;">@Model.Type</p>
+        </div>
+        <div>
+            <strong style="color: var(--text-secondary); display: block; margin-bottom: 8px;">Start Date</strong>
+            <p style="font-size: 1.1rem; margin: 0;">@(Model.StartDate?.ToShortDateString() ?? "Not set")</p>
+        </div>
+        <div>
+            <strong style="color: var(--text-secondary); display: block; margin-bottom: 8px;">End Date</strong>
+            <p style="font-size: 1.1rem; margin: 0;">@(Model.EndDate?.ToShortDateString() ?? "Not set")</p>
+        </div>
+        <div>
+            <strong style="color: var(--text-secondary); display: block; margin-bottom: 8px;">Status</strong>
+            <span class="badge @(Model.CurrentState == "Active" ? "badge-success" : Model.CurrentState == "Expired" ? "badge-danger" : "badge-warning")">
+                @Model.CurrentState
+            </span>
+        </div>
+    </div>
+</div>
+

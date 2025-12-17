@@ -1,0 +1,82 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Record Attendance";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Record Daily Attendance</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    @if (ViewBag.TodayAttendance != null)
+    {
+        var attendance = (Attendance)ViewBag.TodayAttendance;
+        <div class="alert alert-info">
+            <h3>Today's Attendance</h3>
+            <p><strong>Entry Time:</strong> @(attendance.EntryTime?.ToString("yyyy-MM-dd HH:mm") ?? "Not recorded")</p>
+            @if (attendance.ExitTime.HasValue)
+            {
+                <p><strong>Exit Time:</strong> @attendance.ExitTime.Value.ToString("yyyy-MM-dd HH:mm")</p>
+                <p><strong>Duration:</strong> @(attendance.Duration ?? 0) minutes</p>
+            }
+            else
+            {
+                <form method="post" asp-action="RecordAttendanceExit" style="margin-top: 15px;">
+                    <input type="hidden" name="attendanceId" value="@attendance.AttendanceId" />
+                    <div class="form-group">
+                        <label for="logoutMethod">Logout Method</label>
+                        <select id="logoutMethod" name="logoutMethod">
+                            <option value="Web">Web</option>
+                            <option value="Mobile">Mobile</option>
+                            <option value="Terminal">Terminal</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Record Exit Time</button>
+                </form>
+            }
+        </div>
+    }
+    else
+    {
+        <form method="post" asp-action="RecordAttendanceEntry">
+            <div class="form-group">
+                <label for="shiftId">Select Shift (Optional)</label>
+                <select id="shiftId" name="shiftId">
+                    <option value="">No specific shift</option>
+                    @if (ViewBag.Shifts != null)
+                    {
+                        @foreach (var shift in (List<ShiftAssignment>)ViewBag.Shifts)
+                        {
+                            <option value="@shift.ShiftId">@shift.ShiftName</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="loginMethod">Login Method</label>
+                <select id="loginMethod" name="loginMethod">
+                    <option value="Web">Web</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Terminal">Terminal</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Record Entry Time</button>
+        </form>
+    }
+
+    <div style="margin-top: 20px;">
+        <a asp-action="MyAttendance">View My Attendance History</a>
+    </div>
+</div>
+

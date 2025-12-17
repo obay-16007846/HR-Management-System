@@ -1,0 +1,161 @@
+@model List<Notification>
+@{
+    Layout = "_Layout";
+    var unreadCount = Model?.Count(n => !n.ReadStatus) ?? 0;
+}
+
+<div class="card">
+    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 class="card-title">Notifications</h2>
+        @if (unreadCount > 0)
+        {
+            <button type="button" class="btn" onclick="markAllAsRead()" style="background-color: #3b82f6; color: white; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer;">
+                Mark All as Read
+            </button>
+        }
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <div style="margin-top: 20px;">
+            @foreach (var n in Model)
+            {
+                <div class="notification-item" data-notification-id="@n.NotificationId" style="
+                    padding: 16px;
+                    margin-bottom: 12px;
+                    border-left: 4px solid @(n.ReadStatus ? "#e5e7eb" : "#3b82f6");
+                    background-color: @(n.ReadStatus ? "#f9fafb" : "#eff6ff");
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                " onclick="markAsRead(@n.NotificationId, this)">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <div style="flex: 1;">
+                            <p style="margin: 0 0 8px 0; font-weight: @(n.ReadStatus ? "normal" : "600"); color: @(n.ReadStatus ? "#6b7280" : "#1f2937");">
+                                @n.MessageContent
+                            </p>
+                            <div style="display: flex; gap: 12px; align-items: center; margin-top: 8px;">
+                                <span style="font-size: 0.875rem; color: #6b7280;">
+                                    @n.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")
+                                </span>
+                                @if (!string.IsNullOrEmpty(n.Urgency))
+                                {
+                                    <span class="badge" style="
+                                        background-color: @(n.Urgency == "High" ? "#ef4444" : n.Urgency == "Medium" ? "#f59e0b" : "#10b981");
+                                        color: white;
+                                        padding: 4px 8px;
+                                        border-radius: 4px;
+                                        font-size: 0.75rem;
+                                    ">
+                                        @n.Urgency
+                                    </span>
+                                }
+                                @if (!n.ReadStatus)
+                                {
+                                    <span class="badge" style="
+                                        background-color: #3b82f6;
+                                        color: white;
+                                        padding: 4px 8px;
+                                        border-radius: 4px;
+                                        font-size: 0.75rem;
+                                    ">
+                                        Unread
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div style="padding: 40px; text-align: center; color: #6b7280;">
+            <p>No notifications found.</p>
+        </div>
+    }
+</div>
+
+<script>
+    async function markAsRead(notificationId, element) {
+        try {
+            const response = await fetch('/Employee/MarkNotificationAsRead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(notificationId)
+            });
+
+            if (response.ok) {
+                element.style.borderLeftColor = '#e5e7eb';
+                element.style.backgroundColor = '#f9fafb';
+                element.querySelector('p').style.fontWeight = 'normal';
+                element.querySelector('p').style.color = '#6b7280';
+                
+                // Remove unread badge
+                const unreadBadge = element.querySelector('.badge');
+                if (unreadBadge && unreadBadge.textContent.trim() === 'Unread') {
+                    unreadBadge.remove();
+                }
+                
+                // Update notification count in navbar
+                updateNotificationCount();
+            }
+        } catch (error) {
+            console.error('Error marking notification as read:', error);
+        }
+    }
+
+    async function markAllAsRead() {
+        try {
+            const response = await fetch('/Employee/MarkAllNotificationsAsRead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (response.ok) {
+                // Reload the page to reflect changes
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error('Error marking all notifications as read:', error);
+        }
+    }
+
+    async function updateNotificationCount() {
+        try {
+            const response = await fetch('/Employee/GetUnreadNotificationCount');
+            const data = await response.json();
+            updateNotificationBadge(data.count);
+        } catch (error) {
+            console.error('Error updating notification count:', error);
+        }
+    }
+
+    function updateNotificationBadge(count) {
+        const badge = document.getElementById('notificationBadge');
+        if (count > 0) {
+            if (!badge) {
+                const notificationLink = document.querySelector('a[href*="Notifications"]');
+                if (notificationLink) {
+                    const badgeElement = document.createElement('span');
+                    badgeElement.id = 'notificationBadge';
+                    badgeElement.className = 'notification-badge';
+                    badgeElement.textContent = count > 99 ? '99+' : count;
+                    notificationLink.appendChild(badgeElement);
+                }
+            } else {
+                badge.textContent = count > 99 ? '99+' : count;
+            }
+        } else {
+            if (badge) {
+                badge.remove();
+            }
+        }
+    }
+</script>
+

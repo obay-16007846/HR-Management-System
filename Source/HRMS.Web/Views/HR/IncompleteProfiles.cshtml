@@ -1,0 +1,23 @@
+@model List<Employee>
+
+<h2>Incomplete Employee Profiles</h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var e in Model)
+{
+    <tr>
+        <td>@e.FullName</td>
+        <td>@e.Email</td>
+        <td>
+            <a asp-controller="Employee" asp-action="EditEmployee" asp-route-id="@e.EmployeeId">Complete Profile</a>
+        </td>
+    </tr>
+}
+</table>
+

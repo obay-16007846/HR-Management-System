@@ -1,0 +1,26 @@
+@model Attendance
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Attendance Complete";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Today's Attendance Complete</h2>
+    </div>
+
+    <div class="alert alert-success">
+        <h3>Attendance Summary</h3>
+        <p><strong>Entry Time:</strong> @(Model.EntryTime?.ToString("yyyy-MM-dd HH:mm") ?? "N/A")</p>
+        <p><strong>Exit Time:</strong> @(Model.ExitTime?.ToString("yyyy-MM-dd HH:mm") ?? "N/A")</p>
+        <p><strong>Duration:</strong> @(Model.Duration ?? 0) minutes (@((Model.Duration ?? 0) / 60) hours @((Model.Duration ?? 0) % 60) minutes)</p>
+        <p><strong>Login Method:</strong> @Model.LoginMethod</p>
+        <p><strong>Logout Method:</strong> @Model.LogoutMethod</p>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a asp-action="MyAttendance">View My Attendance History</a> |
+        <a asp-action="RecordAttendance">Back to Attendance</a>
+    </div>
+</div>
+

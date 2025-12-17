@@ -1,0 +1,96 @@
+@model LeaveRequest
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Leave Request Details";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Leave Request Details</h2>
+    </div>
+
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Request ID:</dt>
+            <dd class="col-sm-9">@Model.RequestId</dd>
+
+            <dt class="col-sm-3">Employee:</dt>
+            <dd class="col-sm-9">@Model.EmployeeName</dd>
+
+            <dt class="col-sm-3">Leave Type:</dt>
+            <dd class="col-sm-9">@Model.LeaveType</dd>
+
+            <dt class="col-sm-3">Duration:</dt>
+            <dd class="col-sm-9">@Model.Duration day(s)</dd>
+
+            <dt class="col-sm-3">Status:</dt>
+            <dd class="col-sm-9">
+                <span class="badge @(Model.Status == "Approved" ? "badge-success" : 
+                                     Model.Status == "Rejected" ? "badge-danger" : 
+                                     Model.Status == "Finalized" ? "badge-info" : "badge-warning")">
+                    @Model.Status
+                </span>
+            </dd>
+
+            <dt class="col-sm-3">Justification:</dt>
+            <dd class="col-sm-9">@Model.Justification</dd>
+
+            @if (Model.Documents != null && Model.Documents.Count > 0)
+            {
+                <dt class="col-sm-3">Attachments:</dt>
+                <dd class="col-sm-9">
+                    <ul>
+                        @foreach (var doc in Model.Documents)
+                        {
+                            <li>
+                                <a href="~/uploads/@doc.FilePath" target="_blank">@doc.FileName</a>
+                                @if (doc.UploadedAt.HasValue)
+                                {
+                                    <small class="text-muted">(Uploaded: @doc.UploadedAt.Value.ToString("yyyy-MM-dd HH:mm"))</small>
+                                }
+                            </li>
+                        }
+                    </ul>
+                </dd>
+            }
+        </dl>
+    </div>
+
+    <div style="margin-top: 20px; padding: 15px;">
+        @if (User.IsInRole("Manager") && Model.Status == "Pending")
+        {
+            <form method="post" asp-action="ApproveRequest" style="display: inline;">
+                <input type="hidden" name="requestId" value="@Model.RequestId" />
+                <button type="submit" class="btn btn-success" onclick="return confirm('Approve this leave request?')">Approve Request</button>
+            </form>
+            <form method="post" asp-action="DenyRequest" style="display: inline;" onsubmit="return promptDenyReason(event);">
+                <input type="hidden" name="requestId" value="@Model.RequestId" />
+                <input type="hidden" name="reason" id="denyReason" />
+                <button type="submit" class="btn btn-danger">Deny Request</button>
+            </form>
+            <hr />
+        }
+        @if (User.IsInRole("HR Admin"))
+        {
+            <a asp-action="OverrideLeaveDecision" asp-route-id="@Model.RequestId" class="btn btn-warning">Override Decision</a>
+            <hr />
+        }
+        <a asp-action="MyLeaveHistory" class="btn btn-secondary">Back to Leave History</a>
+        <a asp-action="MyLeaveBalance" class="btn btn-info">View Leave Balance</a>
+        <a href="/Account/LoginSuccess" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+</div>
+
+<script>
+    function promptDenyReason(event) {
+        event.preventDefault();
+        const form = event.target;
+        const reason = prompt('Please provide a reason for denying this leave request:');
+        if (reason && reason.trim()) {
+            document.getElementById('denyReason').value = reason.trim();
+            form.submit();
+        }
+        return false;
+    }
+</script>
+

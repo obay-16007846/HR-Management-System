@@ -1,0 +1,55 @@
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Create Employee</h2>
+    </div>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number" required />
+        </div>
+
+        <div class="form-group">
+            <label for="departmentId">Department</label>
+            <select id="departmentId" name="departmentId" required>
+                <option value="">Select department</option>
+                <option value="1">Executive</option>
+                <option value="2">HR</option>
+                <option value="3">IT</option>
+                <option value="4">Finance</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="RoleName">Role</label>
+            <select id="RoleName" name="RoleName" required>
+                <option value="">Select role</option>
+                @foreach (var r in (List<string>)ViewBag.AllowedRoles)
+                {
+                    <option value="@r">@r</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" style="width: 100%;">Create Employee</button>
+    </form>
+</div>

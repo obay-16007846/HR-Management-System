@@ -1,0 +1,55 @@
+@model List<Employee>
+@{
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Select Employee to Edit</h2>
+    </div>
+
+    <div class="card" style="margin-bottom: 24px; padding: 20px;">
+        <form method="get" action="/HR/EditEmployee" style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;">
+            <div class="form-group" style="flex: 1; min-width: 250px; margin: 0;">
+                <label for="search">Search by Employee ID, Name, or Email</label>
+                <input type="text" name="search" id="search" value="@ViewBag.SearchTerm" placeholder="Enter ID, name, or email..." />
+            </div>
+            <button type="submit" class="btn">Search</button>
+            @if (!string.IsNullOrWhiteSpace(ViewBag.SearchTerm?.ToString()))
+            {
+                <a href="/HR/EditEmployee" class="btn btn-secondary">Clear</a>
+            }
+        </form>
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td><strong>@emp.EmployeeId</strong></td>
+                        <td>@emp.FullName</td>
+                        <td>@emp.Email</td>
+                        <td>
+                            <a href="/HR/EditEmployee?id=@emp.EmployeeId" class="btn btn-small">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-center" style="padding: 40px; color: var(--text-secondary);">No employees found.</p>
+    }
+</div>

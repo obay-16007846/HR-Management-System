@@ -1,0 +1,33 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Sync Leave to Attendance";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Sync Leave to Attendance System</h2>
+    </div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-error">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form method="post">
+        <div class="form-group">
+            <label for="leaveRequestId">Leave Request ID</label>
+            <input type="number" id="leaveRequestId" name="leaveRequestId" placeholder="Enter leave request ID" required />
+        </div>
+
+        <button type="submit" style="width: 100%;">Sync Leave to Attendance</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <p><small>This will synchronize a leave request with the attendance system, marking the employee as on leave for the specified period.</small></p>
+    </div>
+</div>
+

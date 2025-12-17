@@ -1,0 +1,100 @@
+@{
+    Layout = "_Layout";
+}
+
+<div class="card" style="max-width: 500px; margin: 40px auto;">
+    <div class="card-header">
+        <h2 class="card-title">Create Personal Account</h2>
+    </div>
+
+    <div class="info-box" style="padding: 24px 24px 24px 24px; margin-top: 24px; margin-bottom: 24px; margin-left: 24px; margin-right: 24px;">
+        <p style="margin: 0;">System Admins, HR Admins, and Line Managers can create their personal accounts here. After registration, you'll be automatically logged in.</p>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-error">
+            @ViewBag.Error
+        </div>
+    }
+
+    <form method="post">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email address" required />
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number" />
+        </div>
+
+        <div class="form-group">
+            <label for="nationalId">National ID (This will be your password)</label>
+            <div class="password-toggle-container">
+                <input type="password" id="nationalId" name="nationalId" placeholder="Enter your National ID" style="flex: 1;" required />
+                <button type="button"
+                        class="password-toggle-btn"
+                        aria-label="Show password while holding"
+                        onmousedown="showPassword()"
+                        onmouseup="hidePassword()"
+                        onmouseleave="hidePassword()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="departmentId">Department</label>
+            <select id="departmentId" name="departmentId" required>
+                <option value="">Select department</option>
+                <option value="1">Executive</option>
+                <option value="2">HR</option>
+                <option value="3">IT</option>
+                <option value="4">Finance</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="roleName">Role</label>
+            <select id="roleName" name="roleName" required>
+                <option value="">Select role</option>
+                <option value="System Admin">System Admin</option>
+                <option value="HR Admin">HR Admin</option>
+                <option value="Line Manager">Line Manager</option>
+            </select>
+        </div>
+
+        <button type="submit" style="width: 100%;">Create Account</button>
+    </form>
+
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="@Url.Action("Login", "Account")">Already have an account? Login here</a>
+    </div>
+</div>
+
+<script>
+    function showPassword() {
+        const pwd = document.getElementById('nationalId');
+        pwd.type = 'text';
+    }
+
+    function hidePassword() {
+        const pwd = document.getElementById('nationalId');
+        pwd.type = 'password';
+    }
+</script>
+

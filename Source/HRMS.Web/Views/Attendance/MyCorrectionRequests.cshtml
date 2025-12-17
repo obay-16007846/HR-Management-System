@@ -1,0 +1,62 @@
+@model List<AttendanceCorrectionRequest>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "My Correction Requests";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">My Attendance Correction Requests</h2>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Correction Type</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model)
+                {
+                    <tr>
+                        <td>@request.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@request.CorrectionType</td>
+                        <td>@request.Reason</td>
+                        <td>
+                            @if (request.Status == "Pending")
+                            {
+                                <span class="badge badge-warning">@request.Status</span>
+                            }
+                            else if (request.Status == "Approved")
+                            {
+                                <span class="badge badge-success">@request.Status</span>
+                            }
+                            else if (request.Status == "Rejected")
+                            {
+                                <span class="badge badge-error">@request.Status</span>
+                            }
+                            else
+                            {
+                                <span>@request.Status</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No correction requests found.</p>
+    }
+
+    <div style="margin-top: 20px;">
+        <a asp-action="SubmitCorrectionRequest">Submit New Correction Request</a>
+    </div>
+</div>
+
