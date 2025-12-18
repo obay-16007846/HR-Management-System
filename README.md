@@ -4,6 +4,54 @@
 
 ---
 
+## How to Run the Project
+
+### Prerequisites
+Make sure the following are installed on your system:
+- Visual Studio
+- .NET 8.0 SDK
+- SQL Server / SQL Server Express
+
+---
+
+### Steps to Run
+
+1. **Create the Database**
+   - Open Visual Studio
+   - Open **SQL Server Object Explorer**
+   - Create a new database named:
+     ```
+     HRMS
+     ```
+
+2. **Create Tables and Insert Data**
+   - Open the provided SQL files in Visual Studio or SQL Server Management Studio (SSMS)
+   - Run the SQL scripts to create the tables and insert the required data
+
+3. **Run the Web Application**
+   - Open **Command Prompt**
+   - Navigate to the project directory:
+     ```
+     cd MS3/Source/HRMS.Web
+     ```
+   - Run the application:
+     ```
+     dotnet run
+     ```
+
+4. **Access the Application**
+   - Open a browser and navigate to the URL shown in the terminal
+   - Typically:
+     ```
+     http://localhost:5000
+     ```
+
+---
+
+### Notes
+- Ensure the connection string in `appsettings.json` points to the `HRMS` database
+- Visual Studio generated folders (`bin/`, `obj/`, `.vs/`) are not required to run the project
+
 ## 1. Project Overview
 This project implements a **comprehensive Human Resource Management System (HRMS)** by designing a complete relational database schema.  
 The goal is to build a **centralized, intelligent platform** that automates and streamlines core HR functions across an organization.
@@ -294,6 +342,7 @@ HRMS-Database-Project/
 ├── README.md
 └── .gitignore
 ```
+
 
 
 
